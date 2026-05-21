@@ -1,11 +1,12 @@
 "use client"
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [currentTime, setCurrentTime] = useState('');
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         const updateTime = () => {
@@ -18,45 +19,75 @@ const Navbar = () => {
         const interval = setInterval(updateTime, 60000);
         return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > window.innerHeight);
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <div>
-            <div className="top-bar">
-                <div className="diagonal-bg" />
-                <div className="top-bar-inner">
-                    <div className="top-bar-left">
-                        {['About', 'Latest', 'Trending', 'FAQ'].map((item) => (
-                            <Link key={item} href={`/${item.toLowerCase()}`} className="top-bar-link">
-                                {item}
-                            </Link>
-                        ))}
-                    </div>
-                    <div className="top-bar-right">
-                        <div className="top-bar-item">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="2" y1="12" x2="22" y2="12"/>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                            </svg>
-                            <select className="lang-select">
-                                <option value="en">English</option>
-                                <option value="uz">Ozbek</option>
-                                <option value="ru">Русский</option>
-                            </select>
+        <div
+            className={`navbar-wrapper ${scrolled ? 'navbar-fixed' : ''}`}
+            style={{
+                position: scrolled ? 'fixed' : 'relative',
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 50,
+                transition: 'background 0.3s ease, box-shadow 0.3s ease',
+                background: scrolled ? '#ffffff' : 'transparent',
+                boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.08)' : 'none',
+            }}
+        >
+            {/* ── TOP BAR (hide when scrolled) ── */}
+            {!scrolled && (
+                <div className="top-bar">
+                    <div className="diagonal-bg" />
+                    <div className="top-bar-inner">
+                        <div className="top-bar-left">
+                            {['About', 'Latest', 'Trending', 'FAQ'].map((item) => (
+                                <Link key={item} href={`/${item.toLowerCase()}`} className="top-bar-link">
+                                    {item}
+                                </Link>
+                            ))}
                         </div>
-                        <div className="top-bar-item">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
-                            </svg>
-                            <span>10:00am – 06:00pm</span>
+                        <div className="top-bar-right">
+                            <div className="top-bar-item">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="2" y1="12" x2="22" y2="12"/>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                                </svg>
+                                <select className="lang-select">
+                                    <option value="en">English</option>
+                                    <option value="uz">Ozbek</option>
+                                    <option value="ru">Русский</option>
+                                </select>
+                            </div>
+                            <div className="top-bar-item">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                <span>10:00am – 06:00pm</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
 
             {/* ── MAIN NAVBAR ── */}
-            <header className="navbar">
-                <div className="diagonal-bg" />
+            <header
+                className="navbar"
+                style={{
+                    background: scrolled ? '#ffffff' : undefined,
+                    borderBottom: scrolled ? '1px solid rgba(0,0,0,0.06)' : undefined,
+                }}
+            >
+                {!scrolled && <div className="diagonal-bg" />}
                 <div className="navbar-inner">
                     {/* Left: Search */}
                     <div className="search-wrap">
@@ -116,7 +147,6 @@ const Navbar = () => {
                     </div>
                 )}
             </header>
-
         </div>
     );
 };
