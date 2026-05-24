@@ -48,7 +48,7 @@ export default function HomeS2() {
     return (
         <section
             className="relative w-full font-sans overflow-hidden"
-            style={{ height: '100vh', minHeight: 480, maxHeight: 720 }}
+            style={{ height: '100vh', minHeight: 480, maxHeight: 720, maxWidth: '100vw' }}
         >
             {/* ── SINGLE BACKGROUND IMAGE (crossfade) ── */}
             <AnimatePresence>
@@ -67,7 +67,7 @@ export default function HomeS2() {
             <div className="absolute inset-0 bg-black/55 z-10" />
 
             {/* ── PANELS ── */}
-            <div className="relative z-20 flex h-full w-full">
+            <div className="relative z-20 flex h-full w-full overflow-x-auto md:overflow-x-visible">
                 {panels.map((panel, i) => {
                     const isActive = hovered === i;
 
@@ -76,7 +76,7 @@ export default function HomeS2() {
                             key={panel.id}
                             onMouseEnter={() => setHovered(i)}
                             onMouseLeave={() => setHovered(null)}
-                            className="relative flex-1 h-full flex flex-col justify-between cursor-pointer overflow-hidden border-r border-white/10 last:border-r-0"
+                            className="relative flex-1 h-full flex flex-col justify-between cursor-pointer overflow-hidden border-r border-white/10 last:border-r-0 min-w-[120px] sm:min-w-[150px]"
                         >
                             {/* ── RIGHT EDGE white line animating top→bottom on hover ── */}
                             <motion.div

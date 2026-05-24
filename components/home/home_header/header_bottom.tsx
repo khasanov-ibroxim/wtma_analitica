@@ -5,7 +5,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 const HeaderBottom = () => {
     return (
-        <div className="relative w-full h-[50vh] sm:h-[60vh] lg:h-[70vh] overflow-hidden">
+        <div className="relative w-full h-[50vh] sm:h-[60vh] lg:h-[70vh] overflow-hidden max-w-full">
 
             <Image
                 src={bg_img}
@@ -18,20 +18,20 @@ const HeaderBottom = () => {
             {/* Top gradient */}
             <div className="absolute top-0 left-0 w-full h-40 z-10" />
 
-            <div className="relative z-20 flex flex-col lg:flex-row items-center justify-center lg:justify-around h-full px-4 sm:px-6 lg:px-0 gap-6 lg:gap-0">
+            <div className="relative z-20 flex flex-col lg:flex-row items-center justify-center lg:justify-around h-full px-4 sm:px-6 lg:px-0 gap-6 lg:gap-0 max-w-full overflow-hidden">
 
                 {/* Left text */}
-                <div className="max-w-3xl p-4 sm:p-6 lg:p-10 text-center lg:text-left">
+                <div className="max-w-3xl p-4 sm:p-6 lg:p-10 text-center lg:text-left w-full overflow-hidden">
 
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.9] font-semibold text-[#1B222C] tracking-[-2px] sm:tracking-[-3px] lg:tracking-[-4px]">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.9] font-semibold text-[#1B222C] tracking-[-2px] sm:tracking-[-3px] lg:tracking-[-4px] break-words">
                         Achieve
                     </h1>
 
-                    <div className="flex flex-col sm:flex-row items-start gap-2 sm:gap-6 mt-2">
+                    <div className="flex flex-col sm:flex-row items-start gap-2 sm:gap-6 mt-2 w-full overflow-hidden">
 
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.9] font-semibold text-[#1B222C] tracking-[-2px] sm:tracking-[-3px] lg:tracking-[-4px]">
-                            <span className="flex items-center justify-center lg:justify-start">
-                              <ArrowUpRight size={40} className="sm:w-16 sm:h-16 lg:w-20 lg:h-20"/> results with
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] leading-[0.9] font-semibold text-[#1B222C] tracking-[-2px] sm:tracking-[-3px] lg:tracking-[-4px] break-words w-full">
+                            <span className="flex items-center justify-center lg:justify-start flex-wrap">
+                              <ArrowUpRight size={40} className="sm:w-16 sm:h-16 lg:w-20 lg:h-20 flex-shrink-0"/> results with
                             </span>
                             modern idea
                         </h1>

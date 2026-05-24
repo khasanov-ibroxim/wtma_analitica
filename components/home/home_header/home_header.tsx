@@ -3,18 +3,18 @@ import Link from "next/link";
 
 const HomeHeader = () => {
     return (
-        <div className={"relative"}>
-            <main className="hero">
+        <div className={"relative overflow-hidden max-w-full"}>
+            <main className="hero overflow-hidden">
                 <div className="diagonal-bg" />
 
-                <div className="hero-text-wrap">
+                <div className="hero-text-wrap overflow-hidden">
                     <div className="marquee">
                         <h1 className="hero-headline">
-                            Business Agency&nbsp;&nbsp;&nbsp;
+                            Business Agency&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </h1>
 
                         <h1 className="hero-headline">
-                            Business Agency&nbsp;&nbsp;&nbsp;
+                            Business Agency&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </h1>
                     </div>
                 </div>

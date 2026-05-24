@@ -30,8 +30,8 @@ export default function HomeS1() {
     const [active, setActive] = useState(0);
 
     return (
-        <section className="container min-h-screen bg-[#fff] flex items-center py-10 px-4 sm:px-6 lg:px-10 font-sans overflow-hidden">
-            <div className="w-full mx-auto flex flex-col lg:flex-row gap-8 lg:gap-8 items-stretch">
+        <section className="container min-h-screen bg-[#fff] flex items-center py-10 px-4 sm:px-6 lg:px-10 font-sans overflow-hidden w-full max-w-full">
+            <div className="w-full mx-auto flex flex-col lg:flex-row gap-8 lg:gap-8 items-stretch max-w-full">
 
                 {/* LEFT: Services cards - MOBILE SWIPER */}
                 <div className="w-full lg:w-[50%] shrink-0">

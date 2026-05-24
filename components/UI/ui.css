@@ -157,13 +157,14 @@
        HERO SECTION
     ══════════════════════════ */
     .hero {
-        @apply relative flex flex-col justify-center;
+        @apply relative flex flex-col justify-center overflow-hidden;
         background: var(--bg-hero);
         min-height: calc(100vh - 108px);
+        max-width: 100vw;
     }
 
     .hero-text-wrap {
-        @apply relative z-[1] px-10 max-w-[1400px] mx-auto w-full;
+        @apply relative z-[1] px-10 max-w-[1400px] mx-auto w-full overflow-hidden;
     }
 
     .hero-eyebrow {
@@ -177,6 +178,8 @@
     .marquee {
         @apply flex w-max;
         animation: InfinitiLoop 20s linear infinite;
+        max-width: none;
+        gap: 0;
     }
 
     .hero-headline {
@@ -184,6 +187,7 @@
         font-family: 'Syne', sans-serif;
         color: var(--text-dark);
         letter-spacing: -0.03em;
+        display: inline-block;
     }
 
     @keyframes InfinitiLoop {
@@ -339,7 +343,7 @@
     }
     .hero-headline {
         font-size: clamp(52px, 14vw, 100px);
-        white-space: normal;
+        white-space: nowrap;
     }
     .hero-stat {
         @apply p-5;
@@ -349,6 +353,13 @@
     }
     .mobile-menu {
         @apply px-5 pt-4 pb-6;
+    }
+    .hero {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    .marquee {
+        animation: InfinitiLoop 15s linear infinite;
     }
 }
 
@@ -365,5 +376,12 @@
     }
     .hero-stat:last-child {
         @apply border-b-0;
+    }
+    .hero-headline {
+        font-size: clamp(40px, 12vw, 80px);
+        white-space: nowrap;
+    }
+    .marquee {
+        animation: InfinitiLoop 12s linear infinite;
     }
 }
