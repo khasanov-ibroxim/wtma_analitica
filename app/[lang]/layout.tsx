@@ -4,6 +4,12 @@ import {notFound} from "next/navigation";
 import Navbar from "@/components/UI/navbar";
 import "@/components/UI/ui.css"
 
+export async function generateStaticParams() {
+    return i18n.locales.map((locale) => ({
+        lang: locale,
+    }));
+}
+
 export default async function LangLayout({
                                              children,
                                              params
