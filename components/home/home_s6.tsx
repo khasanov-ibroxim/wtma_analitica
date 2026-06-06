@@ -7,13 +7,12 @@ import { Play, X } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
-const YOUTUBE_ID = 'dQw4w9WgXcQ'; // o'z video ID ingizga almashtiring
+const YOUTUBE_ID = 'dQw4w9WgXcQ';
 
 const HomeS6 = () => {
     const [hovered, setHovered] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
 
-    // Modal ochilganda scroll lock
     useEffect(() => {
         if (modalOpen) {
             document.body.style.overflow = 'hidden';
@@ -23,7 +22,6 @@ const HomeS6 = () => {
         return () => { document.body.style.overflow = ''; };
     }, [modalOpen]);
 
-    // ESC tugmasi bilan yopish
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => {
             if (e.key === 'Escape') setModalOpen(false);
@@ -34,18 +32,16 @@ const HomeS6 = () => {
 
     return (
         <>
-            <div className="py-24 overflow-hidden">
+            <div className="py-12 lg:py-24 overflow-hidden">
                 <div className="container">
-                    <div className="flex justify-between items-end gap-8">
+                    <div className="flex flex-col lg:flex-row justify-between items-stretch gap-8 lg:items-end">
 
                         {/* LEFT: Text + Arrow */}
-                        <div className="w-[35%] flex flex-col justify-between gap-12 pb-16">
-
-                            {/* Heading */}
+                        <div className="w-full lg:w-[35%] flex flex-col justify-between gap-8 lg:gap-12 pb-0 lg:pb-16 order-2 lg:order-1">
                             <div>
                                 <h2
                                     className="font-semibold leading-[1.05] tracking-[-0.03em] text-[#1B222C]"
-                                    style={{ fontSize: 'clamp(48px, 5vw, 80px)' }}
+                                    style={{ fontSize: 'clamp(36px, 5vw, 80px)' }}
                                 >
                                     Get amazing
                                     <br />
@@ -60,7 +56,6 @@ const HomeS6 = () => {
                                 </h2>
                             </div>
 
-                            {/* Animated Arrow Link */}
                             <Link
                                 href="/"
                                 className="group self-start"
@@ -70,7 +65,7 @@ const HomeS6 = () => {
                             >
                                 <motion.div
                                     className="relative flex items-center justify-center"
-                                    style={{ width: 120, height: 120 }}
+                                    style={{ width: 100, height: 100 }}
                                     whileHover={{ scale: 1.08 }}
                                     transition={{ type: 'spring', stiffness: 300, damping: 22 }}
                                 >
@@ -86,7 +81,7 @@ const HomeS6 = () => {
                                         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                                     />
                                     <motion.svg
-                                        width="44" height="44" viewBox="0 0 24 24"
+                                        width="40" height="40" viewBox="0 0 24 24"
                                         fill="none" stroke="#1B222C" strokeWidth="1.6"
                                         strokeLinecap="round" strokeLinejoin="round"
                                         animate={hovered ? { x: 4, y: -4 } : { x: 0, y: 0 }}
@@ -106,7 +101,7 @@ const HomeS6 = () => {
                         </div>
 
                         {/* RIGHT: Image with play button */}
-                        <div className="w-[65%] h-screen relative overflow-hidden">
+                        <div className="w-full lg:w-[65%] h-[50vh] sm:h-[60vh] lg:h-screen relative overflow-hidden order-1 lg:order-2">
                             <Image
                                 src={right_img}
                                 alt="Experience"
@@ -115,8 +110,8 @@ const HomeS6 = () => {
                                 priority
                             />
 
-                            {/* Play button with ripple */}
-                            <div className="absolute bottom-[100px] left-[100px]">
+                            {/* Play button — mobilda markazda, desktopda chapda */}
+                            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 lg:left-[100px] lg:translate-x-0 lg:bottom-[100px]">
                                 {[0, 0.8, 1.6].map((delay, i) => (
                                     <motion.span
                                         key={i}
@@ -125,13 +120,13 @@ const HomeS6 = () => {
                                         transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut", delay }}
                                     />
                                 ))}
-
                                 <button
                                     onClick={() => setModalOpen(true)}
-                                    className="relative z-10 w-[100px] h-[100px] bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer border border-white/30 hover:bg-white/30 transition-colors duration-300"
+                                    className="relative z-10 w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer border border-white/30 hover:bg-white/30 transition-colors duration-300"
                                     aria-label="Play video"
                                 >
-                                    <Play size={40} className="text-white ml-1" fill="white" />
+                                    <Play size={32} className="text-white ml-1 lg:hidden" fill="white" />
+                                    <Play size={40} className="text-white ml-1 hidden lg:block" fill="white" />
                                 </button>
                             </div>
                         </div>
@@ -140,7 +135,7 @@ const HomeS6 = () => {
                 </div>
             </div>
 
-            {/* ── VIDEO MODAL ── */}
+            {/* VIDEO MODAL */}
             <AnimatePresence>
                 {modalOpen && (
                     <motion.div
@@ -150,7 +145,6 @@ const HomeS6 = () => {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
                     >
-                        {/* Backdrop */}
                         <motion.div
                             className="absolute inset-0 bg-black/85 cursor-pointer"
                             onClick={() => setModalOpen(false)}
@@ -158,8 +152,6 @@ const HomeS6 = () => {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                         />
-
-                        {/* Video container */}
                         <motion.div
                             className="relative z-10 w-full max-w-[900px] mx-4"
                             initial={{ scale: 0.88, opacity: 0, y: 24 }}
@@ -167,7 +159,6 @@ const HomeS6 = () => {
                             exit={{ scale: 0.88, opacity: 0, y: 16 }}
                             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         >
-                            {/* Close button — top right of video */}
                             <button
                                 onClick={() => setModalOpen(false)}
                                 className="absolute -top-12 right-0 flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200 z-20"
@@ -180,8 +171,6 @@ const HomeS6 = () => {
                                     <X size={16} />
                                 </div>
                             </button>
-
-                            {/* 16:9 iframe wrapper */}
                             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                                 <iframe
                                     className="absolute inset-0 w-full h-full"

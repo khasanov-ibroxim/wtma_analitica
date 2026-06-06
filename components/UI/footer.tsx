@@ -37,11 +37,11 @@ export default function Footer() {
     return (
         <footer className="w-full font-sans" style={{ background: '#eef0f8' }}>
 
-            {/* ── TOP: 3-column grid ── */}
+            {/* TOP: 3-column grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#d1d5db]">
 
                 {/* Col 1: Nav links */}
-                <div className="flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-14 sm:py-20 gap-5">
+                <div className="flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-10 sm:py-20 gap-4 sm:gap-5">
                     {navLinks.map((item) => (
                         <Link
                             key={item}
@@ -49,7 +49,7 @@ export default function Footer() {
                             className="no-underline transition-colors duration-200"
                             style={{
                                 fontFamily: '"DM Sans", sans-serif',
-                                fontSize: 'clamp(20px, 2vw, 26px)',
+                                fontSize: 'clamp(18px, 2vw, 26px)',
                                 fontWeight: 400,
                                 color: '#374151',
                                 letterSpacing: '-0.01em',
@@ -63,11 +63,11 @@ export default function Footer() {
                 </div>
 
                 {/* Col 2: Logo + tagline + CTA */}
-                <div className="flex flex-col items-center justify-center px-8 py-14 sm:py-20 gap-6 text-center">
+                <div className="flex flex-col items-center justify-center px-8 py-10 sm:py-20 gap-6 text-center">
                     <h2
                         style={{
                             fontFamily: '"Playfair Display", serif',
-                            fontSize: 'clamp(28px, 3vw, 38px)',
+                            fontSize: 'clamp(26px, 3vw, 38px)',
                             fontWeight: 700,
                             color: '#1B222C',
                             letterSpacing: '-0.01em',
@@ -78,7 +78,7 @@ export default function Footer() {
                     <p
                         style={{
                             fontFamily: '"DM Sans", sans-serif',
-                            fontSize: 'clamp(16px, 1.4vw, 20px)',
+                            fontSize: 'clamp(14px, 1.4vw, 20px)',
                             fontWeight: 400,
                             color: '#6b7280',
                             lineHeight: 1.6,
@@ -108,19 +108,19 @@ export default function Footer() {
                     </Link>
                 </div>
 
-                {/* Col 3: Essential links */}
-                <div className="flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-14 sm:py-20 gap-2">
+                {/* Col 3: Essential links — "Essntial" typo tuzatildi */}
+                <div className="flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-10 sm:py-20 gap-2">
                     <p
                         className="mb-4"
                         style={{
                             fontFamily: '"DM Sans", sans-serif',
-                            fontSize: 'clamp(18px, 1.8vw, 24px)',
+                            fontSize: 'clamp(16px, 1.8vw, 24px)',
                             fontWeight: 600,
                             color: '#1B222C',
                             letterSpacing: '-0.01em',
                         }}
                     >
-                        Essntial
+                        Essential
                     </p>
                     {essentialLinks.map((item) => (
                         <Link
@@ -142,15 +142,12 @@ export default function Footer() {
                 </div>
             </div>
 
-            {/* ── BOTTOM BAR ── */}
-            <div
-                className="border-t border-[#d1d5db]"
-            >
+            {/* BOTTOM BAR */}
+            <div className="border-t border-[#d1d5db]">
                 <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 py-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
 
                     {/* Left: social + copyright */}
                     <div className="flex flex-col gap-4">
-                        {/* Social icons */}
                         <div className="flex items-center gap-4">
                             {[
                                 { icon: <FacebookIcon />, href: '#' },
@@ -168,8 +165,6 @@ export default function Footer() {
                                 </a>
                             ))}
                         </div>
-
-                        {/* Copyright */}
                         <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: 13, color: '#6b7280' }}>
                             © 2024{' '}
                             <strong style={{ color: '#1B222C', fontWeight: 600 }}>Example,</strong>{' '}

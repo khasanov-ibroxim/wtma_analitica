@@ -164,7 +164,7 @@
     }
 
     .hero-text-wrap {
-        @apply relative z-[1] px-10 max-w-[1400px] mx-auto w-full overflow-hidden;
+        @apply relative z-[1]    w-full overflow-hidden;
     }
 
     .hero-eyebrow {

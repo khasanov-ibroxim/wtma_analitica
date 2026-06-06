@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion';
 import person_img from "@/assets/home_s7/imgi_36_h1-counter.jpg";
 import Image from "next/image";
 import Link from "next/link";
-import {ArrowUpRight} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 // ── Animated counter ──────────────────────────────────────────────────────────
 function Counter({
@@ -63,7 +63,7 @@ function StatCard({
         >
             <p
                 className="font-semibold leading-none text-[#1B222C]"
-                style={{ fontSize: 'clamp(52px, 6vw, 80px)', letterSpacing: '-0.03em' }}
+                style={{ fontSize: 'clamp(40px, 6vw, 80px)', letterSpacing: '-0.03em' }}
             >
                 <Counter to={value} suffix={suffix} />
             </p>
@@ -79,18 +79,18 @@ function StatCard({
 // ── Main section ──────────────────────────────────────────────────────────────
 export default function HomeS7() {
     return (
-        <section className="w-full bg-white py-20 lg:py-28 overflow-hidden font-sans">
-            <div className="">
+        <section className="w-full bg-white py-16 lg:py-28 overflow-hidden font-sans">
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-16">
                 <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-0">
 
-                    {/* ── LEFT: Image ────────────────────────────────────────── */}
+                    {/* LEFT: Image */}
                     <motion.div
                         initial={{ opacity: 0, x: -32 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, margin: '-60px' }}
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="w-full lg:w-[36%] relative shrink-0"
-                        style={{ minHeight: 620 }}
+                        style={{ minHeight: 380 }}
                     >
                         <Image
                             src={person_img}
@@ -100,14 +100,14 @@ export default function HomeS7() {
                             priority
                         />
 
-                        {/* Floating "E." badge */}
+                        {/* Floating "E." badge — faqat desktopda ko'rinadi */}
                         <div
-                            className="absolute bottom-[28%] right-[-28px] z-10 w-[88px] h-[88px] rounded-full bg-white border border-[#e5e7eb] flex items-center justify-center shadow-sm"
+                            className="hidden lg:flex absolute bottom-[28%] right-[-28px] z-10 w-[88px] h-[88px] rounded-full bg-white border border-[#e5e7eb] items-center justify-center shadow-sm"
                         >
                             {[0, 0.8, 1.6].map((delay, i) => (
                                 <motion.span
                                     key={i}
-                                    className="absolute inset-0 rounded-full border border-white/60"
+                                    className="absolute inset-0 rounded-full border border-[#1B222C]/20"
                                     animate={{ scale: [1, 2.5], opacity: [0.8, 0] }}
                                     transition={{
                                         duration: 2.5,
@@ -126,7 +126,7 @@ export default function HomeS7() {
                         </div>
                     </motion.div>
 
-                    {/* ── CENTER: Text ────────────────────────────────────────── */}
+                    {/* CENTER: Text */}
                     <motion.div
                         initial={{ opacity: 0, y: 28 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -134,10 +134,9 @@ export default function HomeS7() {
                         transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
                         className="flex-1 flex flex-col justify-center px-0 lg:px-12 xl:px-16 py-6 lg:py-0 gap-8"
                     >
-                        {/* Primary paragraph */}
                         <p
                             className="text-[#1B222C] leading-[1.75]"
-                            style={{ fontSize: 'clamp(16px, 1.35vw, 19px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
+                            style={{ fontSize: 'clamp(15px, 1.35vw, 19px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
                         >
                             Our focus is on delivering superior value to our clients for company modification. Providing sustainable{' '}
                             <strong className="font-semibold">strategies</strong> that will upgrade their business. From strategy to delivery, we are here to make sure your{' '}
@@ -145,21 +144,22 @@ export default function HomeS7() {
                             <strong className="font-semibold">50 years.</strong>
                         </p>
 
-                        {/* Divider */}
                         <div className="w-12 h-px bg-[#1B222C]/20" />
 
-                        {/* Secondary paragraph */}
                         <p
                             className="text-[#6b7280] leading-[1.8]"
-                            style={{ fontSize: 'clamp(15px, 1.2vw, 17px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
+                            style={{ fontSize: 'clamp(14px, 1.2vw, 17px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
                         >
                             We are constantly rethinking the way we work and deliver value. Our team of experts brings fresh perspectives to every challenge, ensuring that each client receives tailored solutions that drive real, measurable results.
                         </p>
-                        <Link  href={"#"} className={"flex gap-1 border-1 w-[140px] border-black/20  items-center justify-center p-2"}>Get in touch <ArrowUpRight/></Link>
+
+                        <Link href={"#"} className={"flex gap-1 border-[1px] w-[140px] border-black/20 items-center justify-center p-2"}>
+                            Get in touch <ArrowUpRight />
+                        </Link>
                     </motion.div>
 
-                    {/* ── RIGHT: Stats ────────────────────────────────────────── */}
-                    <div className="w-full lg:w-[24%] shrink-0 flex flex-col justify-center gap-12 lg:pl-10 xl:pl-14 lg:border-l border-[#e5e7eb]">
+                    {/* RIGHT: Stats */}
+                    <div className="w-full lg:w-[24%] shrink-0 flex flex-row lg:flex-col justify-around lg:justify-center gap-8 lg:gap-12 lg:pl-10 xl:pl-14 lg:border-l border-t lg:border-t-0 border-[#e5e7eb] pt-8 lg:pt-0">
                         <StatCard value={95} suffix="%" label="Clients Satisfied and Repeating" delay={0.2} />
                         <StatCard value={125} suffix="k" label="Projects Done" delay={0.35} />
                     </div>

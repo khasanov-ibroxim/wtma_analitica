@@ -154,7 +154,7 @@ function TeamCard({ member, index }: { member: typeof team[0]; index: number }) 
 export default function HomeS8() {
     return (
         <section className="w-full py-20 lg:py-28 font-sans" style={{ background: '#eef0f8' }}>
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-16">
+            <div className=" mx-auto px-4 sm:px-8 lg:px-16">
 
                 {/* Header */}
                 <motion.div
@@ -183,7 +183,7 @@ export default function HomeS8() {
                 </motion.div>
 
                 {/* Team grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-10 justify-items-center">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-10 justify-items-center">
                     {team.map((member, i) => (
                         <TeamCard key={member.name} member={member} index={i} />
                     ))}
