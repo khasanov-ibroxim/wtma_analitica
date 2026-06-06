@@ -1,0 +1,171 @@
+'use client';
+
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import person_img from "@/assets/home_s7/imgi_36_h1-counter.jpg";
+import Image from "next/image";
+import Link from "next/link";
+import {ArrowUpRight} from "lucide-react";
+
+// ── Animated counter ──────────────────────────────────────────────────────────
+function Counter({
+                     to,
+                     suffix = '',
+                     duration = 1800,
+                 }: {
+    to: number;
+    suffix?: string;
+    duration?: number;
+}) {
+    const [val, setVal] = useState(0);
+    const ref = useRef<HTMLSpanElement>(null);
+    const inView = useInView(ref, { once: true, margin: '-60px' });
+
+    useEffect(() => {
+        if (!inView) return;
+        const start = performance.now();
+        const tick = (now: number) => {
+            const p = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            setVal(Math.round(ease * to));
+            if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+    }, [inView, to, duration]);
+
+    return (
+        <span ref={ref}>
+            {val}
+            {suffix}
+        </span>
+    );
+}
+
+// ── Stat card ─────────────────────────────────────────────────────────────────
+function StatCard({
+                      value,
+                      suffix,
+                      label,
+                      delay,
+                  }: {
+    value: number;
+    suffix: string;
+    label: string;
+    delay: number;
+}) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col gap-2"
+        >
+            <p
+                className="font-semibold leading-none text-[#1B222C]"
+                style={{ fontSize: 'clamp(52px, 6vw, 80px)', letterSpacing: '-0.03em' }}
+            >
+                <Counter to={value} suffix={suffix} />
+            </p>
+            <div className="w-full h-px bg-[#1B222C]/10 my-1" />
+            <p className="text-[14px] leading-snug text-[#6b7280] max-w-[180px]"
+               style={{ fontFamily: '"DM Sans", sans-serif' }}>
+                {label}
+            </p>
+        </motion.div>
+    );
+}
+
+// ── Main section ──────────────────────────────────────────────────────────────
+export default function HomeS7() {
+    return (
+        <section className="w-full bg-white py-20 lg:py-28 overflow-hidden font-sans">
+            <div className="">
+                <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-0">
+
+                    {/* ── LEFT: Image ────────────────────────────────────────── */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -32 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: '-60px' }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="w-full lg:w-[36%] relative shrink-0"
+                        style={{ minHeight: 620 }}
+                    >
+                        <Image
+                            src={person_img}
+                            alt="Team member"
+                            fill
+                            className="object-cover object-top grayscale-[15%]"
+                            priority
+                        />
+
+                        {/* Floating "E." badge */}
+                        <div
+                            className="absolute bottom-[28%] right-[-28px] z-10 w-[88px] h-[88px] rounded-full bg-white border border-[#e5e7eb] flex items-center justify-center shadow-sm"
+                        >
+                            {[0, 0.8, 1.6].map((delay, i) => (
+                                <motion.span
+                                    key={i}
+                                    className="absolute inset-0 rounded-full border border-white/60"
+                                    animate={{ scale: [1, 2.5], opacity: [0.8, 0] }}
+                                    transition={{
+                                        duration: 2.5,
+                                        repeat: Infinity,
+                                        ease: "easeOut",
+                                        delay,
+                                    }}
+                                />
+                            ))}
+                            <span
+                                className="text-[28px] font-semibold text-[#1B222C]"
+                                style={{ fontFamily: '"Playfair Display", serif', letterSpacing: '-0.01em' }}
+                            >
+                                E.
+                            </span>
+                        </div>
+                    </motion.div>
+
+                    {/* ── CENTER: Text ────────────────────────────────────────── */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-40px' }}
+                        transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+                        className="flex-1 flex flex-col justify-center px-0 lg:px-12 xl:px-16 py-6 lg:py-0 gap-8"
+                    >
+                        {/* Primary paragraph */}
+                        <p
+                            className="text-[#1B222C] leading-[1.75]"
+                            style={{ fontSize: 'clamp(16px, 1.35vw, 19px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
+                        >
+                            Our focus is on delivering superior value to our clients for company modification. Providing sustainable{' '}
+                            <strong className="font-semibold">strategies</strong> that will upgrade their business. From strategy to delivery, we are here to make sure your{' '}
+                            <strong className="font-semibold">business</strong> succeeds. Thinking, writing and planning with brand for more than{' '}
+                            <strong className="font-semibold">50 years.</strong>
+                        </p>
+
+                        {/* Divider */}
+                        <div className="w-12 h-px bg-[#1B222C]/20" />
+
+                        {/* Secondary paragraph */}
+                        <p
+                            className="text-[#6b7280] leading-[1.8]"
+                            style={{ fontSize: 'clamp(15px, 1.2vw, 17px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
+                        >
+                            We are constantly rethinking the way we work and deliver value. Our team of experts brings fresh perspectives to every challenge, ensuring that each client receives tailored solutions that drive real, measurable results.
+                        </p>
+                        <Link  href={"#"} className={"flex gap-1 border-1 w-[140px] border-black/20  items-center justify-center p-2"}>Get in touch <ArrowUpRight/></Link>
+                    </motion.div>
+
+                    {/* ── RIGHT: Stats ────────────────────────────────────────── */}
+                    <div className="w-full lg:w-[24%] shrink-0 flex flex-col justify-center gap-12 lg:pl-10 xl:pl-14 lg:border-l border-[#e5e7eb]">
+                        <StatCard value={95} suffix="%" label="Clients Satisfied and Repeating" delay={0.2} />
+                        <StatCard value={125} suffix="k" label="Projects Done" delay={0.35} />
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    );
+}

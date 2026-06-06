@@ -3,6 +3,7 @@ import {getCommonDictionary} from "@/lib/dictionary";
 import {notFound} from "next/navigation";
 import Navbar from "@/components/UI/navbar";
 import "@/components/UI/ui.css"
+import Footer from "@/components/UI/footer";
 
 export async function generateStaticParams() {
     return i18n.locales.map((locale) => ({
@@ -30,6 +31,7 @@ export default async function LangLayout({
         <>
             <Navbar/>
             {children}
+            <Footer/>
         </>
     );
 }
