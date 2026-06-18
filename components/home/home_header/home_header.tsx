@@ -10,11 +10,11 @@ const HomeHeader = () => {
                 <div className="hero-text-wrap ">
                     <div className="marquee">
                         <h1 className="hero-headline">
-                            Business Agency&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           Tex Area Analitics
                         </h1>
 
                         <h1 className="hero-headline">
-                            Business Agency&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Tex Area Analitics
                         </h1>
                     </div>
                 </div>
