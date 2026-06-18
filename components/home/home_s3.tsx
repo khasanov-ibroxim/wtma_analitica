@@ -40,50 +40,32 @@ const AwardIcon = () => (
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
-const tabs = ['Analysis', 'Business', 'Consultancy', 'Corporate', 'Economy', 'Finances', 'Insurance'];
+const tabs = [{title:"США" , tag:"usa"}, {title:"Саудовская Аравия" , tag:"baa"}, {title:"Япония" , tag:"japan"}, {title:"Германия" , tag:"gr"}];
 
 const caseStudies: Record<string, { id: number; tag: string; title: string; image: string }[]> = {
-    Analysis: [
-        { id: 1, tag: 'Analysis', title: 'Market data deep-dive for a leading investment firm', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80' },
-        { id: 2, tag: 'Analysis', title: 'Competitive intelligence platform build-out', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80' },
-        { id: 3, tag: 'Analysis', title: 'Quantitative risk model for hedge fund portfolio', image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80' },
-        { id: 4, tag: 'Analysis', title: 'Consumer behaviour analytics redesign', image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80' },
-        { id: 5, tag: 'Analysis', title: 'Real-time dashboard for financial KPIs', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80' },
+    usa: [
+        { id: 1, tag: 'usa', title: 'Market data deep-dive for a leading investment firm', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80' },
+        { id: 2, tag: 'usa', title: 'Competitive intelligence platform build-out', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80' },
+        { id: 3, tag: 'usa', title: 'Quantitative risk model for hedge fund portfolio', image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80' },
+        { id: 4, tag: 'usa', title: 'Consumer behaviour analytics redesign', image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80' },
+        { id: 5, tag: 'usa', title: 'Real-time dashboard for financial KPIs', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80' },
     ],
-    Business: [
-        { id: 1, tag: 'Business', title: 'Strategic growth plan for mid-market retailer', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80' },
-        { id: 2, tag: 'Business', title: 'Operational efficiency audit — logistics sector', image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80' },
-        { id: 3, tag: 'Business', title: 'Go-to-market strategy for SaaS startup', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80' },
-        { id: 4, tag: 'Business', title: 'M&A due-diligence support for tech acquirer', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80' },
+    baa: [
+        { id: 1, tag: 'baa', title: 'Strategic growth plan for mid-market retailer', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80' },
+        { id: 2, tag: 'baa', title: 'Operational efficiency audit — logistics sector', image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80' },
+        { id: 3, tag: 'baa', title: 'Go-to-market strategy for SaaS startup', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80' },
+        { id: 4, tag: 'baa', title: 'M&A due-diligence support for tech acquirer', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80' },
     ],
-    Consultancy: [
-        { id: 1, tag: 'Consultancy', title: 'Transformation roadmap for global bank', image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80' },
-        { id: 2, tag: 'Consultancy', title: 'Change management programme — pharma', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80' },
-        { id: 3, tag: 'Consultancy', title: 'Digital strategy advisory for media group', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80' },
+    japan: [
+        { id: 1, tag: 'japan', title: 'Transformation roadmap for global bank', image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80' },
+        { id: 2, tag: 'japan', title: 'Change management programme — pharma', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80' },
+        { id: 3, tag: 'japan', title: 'Digital strategy advisory for media group', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80' },
     ],
-    Corporate: [
-        { id: 1, tag: 'Corporate', title: 'Board governance framework overhaul', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80' },
-        { id: 2, tag: 'Corporate', title: 'ESG reporting suite for FTSE 100 company', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80' },
-        { id: 3, tag: 'Corporate', title: 'Executive leadership coaching programme', image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80' },
-        { id: 4, tag: 'Corporate', title: 'Investor relations redesign for IPO readiness', image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80' },
-    ],
-    Economy: [
-        { id: 1, tag: 'Economy', title: 'Macroeconomic outlook report — MENA region', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80' },
-        { id: 2, tag: 'Economy', title: 'Inflation impact model for consumer goods', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80' },
-        { id: 3, tag: 'Economy', title: 'Trade policy analysis for government ministry', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80' },
-    ],
-    Finances: [
-        { id: 1, tag: 'Finances', title: 'Wealth management platform for UHNW clients', image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80' },
-        { id: 2, tag: 'Finances', title: 'Personal finance app UX & strategy', image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80' },
-        { id: 3, tag: 'Finances', title: 'Corporate treasury optimisation project', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80' },
-        { id: 4, tag: 'Finances', title: 'Pension fund restructuring advisory', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80' },
-        { id: 5, tag: 'Finances', title: 'Fintech lending product launch strategy', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80' },
-    ],
-    Insurance: [
-        { id: 1, tag: 'Insurance', title: 'Claims automation for tier-1 insurer', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80' },
-        { id: 2, tag: 'Insurance', title: 'Underwriting risk model refresh', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80' },
-        { id: 3, tag: 'Insurance', title: 'Customer portal redesign — life insurance', image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80' },
-    ],
+    gr: [
+        { id: 1, tag: 'gr', title: 'Transformation roadmap for global bank', image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80' },
+        { id: 2, tag: 'gr', title: 'Change management programme — pharma', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80' },
+        { id: 3, tag: 'gr', title: 'Digital strategy advisory for media group', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80' },
+    ]
 };
 
 const awards = [
@@ -109,7 +91,7 @@ function getCardWidth() {
 
 function CaseCard({ item, cardWidth }: { item: { tag: string; title: string; image: string }; cardWidth: number }) {
     const [hovered, setHovered] = useState(false);
-
+    console.log(item)
     return (
         <div
             onMouseEnter={() => setHovered(true)}
@@ -170,7 +152,7 @@ function CaseCard({ item, cardWidth }: { item: { tag: string; title: string; ima
 // ─── HOME S4 ─────────────────────────────────────────────────────────────────
 
 export function HomeS4() {
-    const [activeTab, setActiveTab] = useState('Analysis');
+    const [activeTab, setActiveTab] = useState('usa');
     const [cardWidth, setCardWidth] = useState(380);
     const tabsScrollRef = useRef<HTMLDivElement>(null);
 
@@ -243,10 +225,10 @@ export function HomeS4() {
                 {/* Header */}
                 <div className="mb-8 sm:mb-10">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-400 mb-3">
-                        Case Studies
+                        МЕЖДУНАРОДНЫЕ РЫНКИ
                     </p>
                     <h2 className="text-4xl sm:text-5xl lg:text-[72px] font-semibold text-gray-900 leading-[1.05] tracking-tight">
-                        Our work and<br className="hidden sm:block" /> success stories
+                        Анализ текстильных <br className="hidden sm:block" /> рынков по странам
                     </h2>
                 </div>
 
@@ -258,20 +240,20 @@ export function HomeS4() {
                         className="flex items-center gap-0.5 overflow-x-auto scrollbar-none flex-1 min-w-0"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
-                        {tabs.map((tab) => (
+                        {tabs.map((tab,index) => (
                             <button
-                                key={tab}
-                                onClick={() => setActiveTab(tab)}
+                                key={index}
+                                onClick={() => setActiveTab(tab.tag)}
                                 className="relative px-3 sm:px-4 py-3 text-[13px] sm:text-sm font-medium transition-colors duration-200 whitespace-nowrap shrink-0"
                                 style={{
-                                    color: activeTab === tab ? '#111827' : '#9ca3af',
+                                    color: activeTab === tab.tag ? '#111827' : '#9ca3af',
                                     background: 'transparent',
                                     border: 'none',
                                     cursor: 'pointer',
                                 }}
                             >
-                                {tab}
-                                {activeTab === tab && (
+                                {tab.title}
+                                {activeTab === tab.tag && (
                                     <motion.div
                                         layoutId="tab-underline-s4"
                                         className="absolute bottom-0 left-0 right-0 h-[2px] bg-gray-900"
@@ -343,10 +325,10 @@ export function HomeS3() {
                 {/* Header */}
                 <div className="text-center mb-12 sm:mb-16 lg:mb-20">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-400 mb-3 sm:mb-4">
-                        Awards
+                        МОНИТОРИНГ
                     </p>
                     <h2 className="text-4xl sm:text-5xl lg:text-[76px] font-semibold text-gray-900 leading-tight tracking-tight">
-                        Awards &amp; recognition
+                        Динамика цен на хлопок
                     </h2>
                 </div>
 

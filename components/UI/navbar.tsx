@@ -105,14 +105,14 @@ const Navbar = () => {
                     </div>
 
                     {/* Center: Logo */}
-                    <div className="logo-wrap">
-                        <Link href="/" className="logo">Adina.</Link>
-                    </div>
+                    {/*<div className="logo-wrap">*/}
+                    {/*    <Link href="/" className="logo">Adina.</Link>*/}
+                    {/*</div>*/}
 
                     {/* Right: Nav */}
                     <ul className="nav-links">
-                        {['Home', 'Pages', 'Blog', 'Service', 'Contact'].map((item) => (
-                            <li key={item}>
+                        {['Главная', 'Аналитика рынков', 'Индекс хлопка', 'Архив котировок', 'Центр экспертизы','Динамика рынка','Контакты'].map((item) => (
+                            <li key={item} className={"text-center"}>
                                 <Link href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`} className="nav-link">
                                     {item}
                                 </Link>
@@ -134,7 +134,7 @@ const Navbar = () => {
                 {/* Mobile dropdown */}
                 {isMenuOpen && (
                     <div className="mobile-menu">
-                        {['Home', 'Pages', 'Blog', 'Service', 'Contact'].map((item) => (
+                        {['Главная', 'Аналитика рынков', 'Индекс хлопка', 'Архив котировок', 'Центр экспертизы','Динамика рынка','Контакты'].map((item) => (
                             <Link
                                 key={item}
                                 href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}

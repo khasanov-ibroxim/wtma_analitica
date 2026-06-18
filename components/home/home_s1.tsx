@@ -1,6 +1,6 @@
 "use client"
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, {useState} from 'react';
+import {motion, AnimatePresence} from 'framer-motion';
 
 const services = [
     {
@@ -30,7 +30,8 @@ export default function HomeS1() {
     const [active, setActive] = useState(0);
 
     return (
-        <section className="container min-h-screen bg-[#fff] flex items-center py-10 px-4 sm:px-6 lg:px-10 font-sans overflow-hidden w-full max-w-full">
+        <section
+            className="container min-h-screen bg-[#fff] flex items-center py-10 px-4 sm:px-6 lg:px-10 font-sans overflow-hidden w-full max-w-full">
             <div className="w-full mx-auto flex flex-col lg:flex-row gap-8 lg:gap-8 items-stretch max-w-full">
 
                 {/* LEFT: Services cards - MOBILE SWIPER */}
@@ -38,15 +39,15 @@ export default function HomeS1() {
 
                     {/* Mobile: Full card swiper */}
                     <div className="lg:hidden">
-                        <div className="relative" style={{ minHeight: 480 }}>
+                        <div className="relative" style={{minHeight: 480}}>
                             {services.map((s, i) => (
                                 <AnimatePresence key={s.id} mode="wait">
                                     {active === i && (
                                         <motion.div
-                                            initial={{ opacity: 0, x: 100 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, x: -100 }}
-                                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                            initial={{opacity: 0, x: 100}}
+                                            animate={{opacity: 1, x: 0}}
+                                            exit={{opacity: 0, x: -100}}
+                                            transition={{duration: 0.4, ease: [0.22, 1, 0.36, 1]}}
                                             className="absolute inset-0 flex flex-col bg-[#E4E9F4] rounded-lg overflow-hidden"
                                         >
                                             {/* Number */}
@@ -115,7 +116,8 @@ export default function HomeS1() {
                     </div>
 
                     {/* Desktop: Original accordion */}
-                    <div className="hidden lg:flex items-center justify-center gap-5 flex-row shrink-0 self-stretch" style={{ minHeight: 480 }}>
+                    <div className="hidden lg:flex items-center justify-center gap-5 flex-row shrink-0 self-stretch"
+                         style={{minHeight: 480}}>
                         {services.map((s, i) => {
                             const isActive = active === i;
                             return (
@@ -126,10 +128,10 @@ export default function HomeS1() {
                                         width: isActive ? 380 : 72,
                                         backgroundColor: isActive ? '#ffffff' : '#e4e9f4',
                                     }}
-                                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                    transition={{duration: 0.5, ease: [0.22, 1, 0.36, 1]}}
                                     onClick={() => setActive(i)}
                                     className="relative flex flex-col justify-between cursor-pointer overflow-hidden shrink-0 self-stretch border-r border-[#cdd3e0] last:border-r-0"
-                                    style={{ minHeight: 480 }}
+                                    style={{minHeight: 480}}
                                 >
                                     {/* Number */}
                                     <div className="pt-6 text-center shrink-0">
@@ -145,18 +147,18 @@ export default function HomeS1() {
                                         {isActive && (
                                             <motion.div
                                                 className="absolute inset-0 flex flex-col justify-between pt-14 overflow-hidden bg-[#E4E9F4]"
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1, transition: { duration: 0.35, delay: 0.22 } }}
-                                                exit={{ opacity: 0, transition: { duration: 0.12 } }}
+                                                initial={{opacity: 0}}
+                                                animate={{opacity: 1, transition: {duration: 0.35, delay: 0.22}}}
+                                                exit={{opacity: 0, transition: {duration: 0.12}}}
                                             >
-                                                <div className="mx-0 overflow-hidden" style={{ height: 220 }}>
+                                                <div className="mx-0 overflow-hidden" style={{height: 220}}>
                                                     <motion.img
                                                         src={s.image}
                                                         alt={s.title}
                                                         className="w-full h-full object-cover"
-                                                        initial={{ scale: 1.07 }}
-                                                        animate={{ scale: 1 }}
-                                                        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                                                        initial={{scale: 1.07}}
+                                                        animate={{scale: 1}}
+                                                        transition={{duration: 0.7, ease: [0.22, 1, 0.36, 1]}}
                                                     />
                                                 </div>
 
@@ -182,7 +184,7 @@ export default function HomeS1() {
                                                         </button>
                                                         <span
                                                             className="select-none pointer-events-none font-bold text-white/50"
-                                                            style={{ fontSize: 72, lineHeight: 1 }}
+                                                            style={{fontSize: 72, lineHeight: 1}}
                                                             aria-hidden="true"
                                                         >
                                                             {s.id}
@@ -198,13 +200,17 @@ export default function HomeS1() {
                                         {!isActive && (
                                             <motion.div
                                                 className="pb-6 flex justify-center shrink-0"
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1, transition: { delay: 0.25 } }}
-                                                exit={{ opacity: 0, transition: { duration: 0.1 } }}
+                                                initial={{opacity: 0}}
+                                                animate={{opacity: 1, transition: {delay: 0.25}}}
+                                                exit={{opacity: 0, transition: {duration: 0.1}}}
                                             >
                                                 <span
                                                     className="text-[18px] font-medium tracking-[0.13em] uppercase whitespace-nowrap "
-                                                    style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', margin: '20px' }}
+                                                    style={{
+                                                        writingMode: 'vertical-rl',
+                                                        transform: 'rotate(180deg)',
+                                                        margin: '20px'
+                                                    }}
                                                 >
                                                     {s.label}
                                                 </span>
@@ -220,23 +226,24 @@ export default function HomeS1() {
                 {/* ══════════════════
             RIGHT: STATIC
         ══════════════════ */}
-                <div className="flex-1 flex flex-col justify-between lg:pl-10 xl:pl-16 py-6 lg:py-2 relative overflow-hidden">
+                <div
+                    className="flex-1 flex flex-col justify-around gap-4 lg:pl-10 xl:pl-16 py-6 lg:py-2 relative overflow-hidden">
 
                     <div>
                         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gray-400 mb-3 sm:mb-5">
-                            Our Services
+                            Экспертная аналитика
                         </p>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-[58px] font-medium text-gray-900 leading-[1.08] tracking-tight">
-                            Fields of expertise<br />
-                            that our great team<br />
-                            excels in
+                            Аналитика. <br/>
+                            Экспертиза.<br/>
+                            Прогнозы.
                         </h2>
                     </div>
 
                     <p className="text-gray-500 text-sm sm:text-[15px] leading-relaxed max-w-md mt-4 lg:mt-0">
-                        Elevate your experience with our premium services tailored to your needs.
-                        From expert consultations to seamless solutions, were here to exceed your
-                        expectations let us handle the details.
+                        Центр экспертизы предоставляет глубокий анализ отраслевых процессов, оценку рыночной конъюнктуры
+                        и экспертные прогнозы. Мы помогаем компаниям понимать факторы, влияющие на развитие текстильного
+                        рынка, и принимать решения на основе данных.
                     </p>
                 </div>
 

@@ -21,15 +21,15 @@ const HeaderBottom = () => {
                 <div className="max-w-3xl p-4 sm:p-6 lg:p-10 text-center lg:text-left w-full overflow-hidden">
 
                     <h1 className="text-3xl sm:text-5xl lg:text-[80px] leading-[0.9] font-semibold text-[#1B222C] tracking-[-2px] sm:tracking-[-3px] lg:tracking-[-4px] break-words">
-                        Achieve
+                        Центр
                     </h1>
 
                     <div className="flex flex-col sm:flex-row items-start gap-2 sm:gap-6 mt-2 w-full overflow-hidden">
                         <h1 className="text-3xl sm:text-5xl lg:text-[80px] leading-[0.9] font-semibold text-[#1B222C] tracking-[-2px] sm:tracking-[-3px] lg:tracking-[-4px] break-words w-full">
                             <span className="flex items-center justify-center lg:justify-start flex-wrap">
-                                <ArrowUpRight size={32} className="sm:w-14 sm:h-14 lg:w-20 lg:h-20 flex-shrink-0" /> results with
+                                <ArrowUpRight size={32} className="sm:w-14 sm:h-14 lg:w-20 lg:h-20 flex-shrink-0" />  аналитики
                             </span>
-                            modern idea
+                            текстильного рынка
                         </h1>
                     </div>
                 </div>
@@ -57,9 +57,9 @@ const HeaderBottom = () => {
 
                     {/* Text */}
                     <p className="text-sm sm:text-lg lg:text-2xl leading-[1.4] text-[#1B222C] font-medium">
-                        Expertise advice for
+                        Экспертная аналитика для
                         <br />
-                        your business plans
+                        развития текстильного бизнеса
                     </p>
                 </div>
             </div>

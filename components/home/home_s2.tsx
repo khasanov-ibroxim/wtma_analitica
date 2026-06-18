@@ -5,37 +5,37 @@ import { motion, AnimatePresence } from 'framer-motion';
 const panels = [
     {
         id: '01',
-        tag: 'Business',
-        title: 'Investments',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        tag: 'Аналитика рынков',
+        title: 'Аналитика рынков',
+        description: 'Ключевые тренды и показатели отрасли. ',
         image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80',
     },
     {
         id: '02',
-        tag: 'Finance',
-        title: 'Online Business',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        tag: 'Индекс хлопка ',
+        title: 'Индекс хлопка ',
+        description: 'Ежедневный мониторинг цен на хлопок. ',
         image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80',
     },
     {
         id: '03',
-        tag: 'Investment',
-        title: 'Cryptocurrency',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        tag: 'Архив котировок ',
+        title: 'Архив котировок ',
+        description: 'Исторические данные и аналитика цен. ',
         image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1600&q=80',
     },
     {
         id: '04',
-        tag: 'Digital Marketing',
-        title: 'Marketing',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        tag: 'Центр экспертизы ',
+        title: 'Центр экспертизы ',
+        description: 'Экспертные мнения и отраслевые оценки. ',
         image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80',
     },
     {
         id: '05',
-        tag: 'Tax Advising',
-        title: 'Business & Finance',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        tag: 'Динамика рынка ',
+        title: 'Динамика рынка ',
+        description: 'Изменения рынка в режиме реального времени.',
         image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80',
     },
 ];
@@ -122,7 +122,7 @@ export default function HomeS2() {
                                             onClick={(e) => e.stopPropagation()}
                                             className="inline-flex items-center gap-2 border border-white text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200"
                                         >
-                                            Read More
+                                            Подробно
                                             <svg width="12" height="12" viewBox="0 0 13 13" fill="none">
                                                 <path
                                                     d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5"

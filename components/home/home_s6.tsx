@@ -33,26 +33,26 @@ const HomeS6 = () => {
     return (
         <>
             <div className="py-12 lg:py-24 overflow-hidden">
-                <div className="container">
+                <div className="px-5">
                     <div className="flex flex-col lg:flex-row justify-between items-stretch gap-8 lg:items-end">
 
                         {/* LEFT: Text + Arrow */}
-                        <div className="w-full lg:w-[35%] flex flex-col justify-between gap-8 lg:gap-12 pb-0 lg:pb-16 order-2 lg:order-1">
+                        <div className="w-full lg:w-[45%] flex flex-col justify-between gap-8 lg:gap-12 pb-0 lg:pb-16 order-2 lg:order-1">
                             <div>
                                 <h2
                                     className="font-semibold leading-[1.05] tracking-[-0.03em] text-[#1B222C]"
                                     style={{ fontSize: 'clamp(36px, 5vw, 80px)' }}
                                 >
-                                    Get amazing
+                                    Будущее
                                     <br />
                                     <span className="relative inline-block">
-                                        <span className="relative z-10">experience</span>
+                                        <span className="relative z-10">рынка начинается</span>
                                         <span
                                             className="absolute bottom-[8%] left-0 w-full h-[30%] -z-0"
                                             style={{ background: 'rgba(230, 210, 200, 0.45)' }}
                                         />
                                     </span>
-                                    {' '}with us
+                                    {' '} с понимания данных
                                 </h2>
                             </div>
 
@@ -101,7 +101,7 @@ const HomeS6 = () => {
                         </div>
 
                         {/* RIGHT: Image with play button */}
-                        <div className="w-full lg:w-[65%] h-[50vh] sm:h-[60vh] lg:h-screen relative overflow-hidden order-1 lg:order-2">
+                        <div className="w-full lg:w-[55%] h-[50vh] sm:h-[60vh] lg:h-screen relative overflow-hidden order-1 lg:order-2">
                             <Image
                                 src={right_img}
                                 alt="Experience"
