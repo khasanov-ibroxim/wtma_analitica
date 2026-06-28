@@ -36,10 +36,10 @@ const AboutS3 = () => {
             <div className="mx-auto max-w-6xl">
                 <div className="text-center">
                     <p className="text-xs uppercase tracking-wide text-neutral-400">
-                        Our Experts
+                        НАША КОМАНДА
                     </p>
                     <h2 className="mt-3 text-3xl font-light text-neutral-900 sm:text-4xl">
-                        Meet our advisors
+                        Люди отраслевой аналитики
                     </h2>
                 </div>
 

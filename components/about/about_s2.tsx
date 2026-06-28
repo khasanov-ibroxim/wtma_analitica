@@ -6,31 +6,31 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 const milestones = [
     {
         id: "01",
-        year: "1972",
-        title: "Journey Was Started",
+        year: "2000",
+        title: "Глобализация изменила производство",
         desc:
-            "We are constantly rethinking the future by creating the next generation of products, brands and services from a hybrid perspective.",
+            "Текстильная индустрия росла за счёт дешёвой рабочей силы, стабильной логистики и предсказуемых рынков. Производители строили стратегии на годы вперёд.",
     },
     {
         id: "02",
-        year: "2000",
-        title: "100+ Worldwide Base",
+        year: "2020",
+        title: "Старые модели перестали работать",
         desc:
-            "We are constantly rethinking the future by creating the next generation of products, brands and services from a hybrid perspective.",
+            "Пандемия, кризис поставок и геополитические изменения показали, что традиционные производственные цепочки больше не гарантируют стабильность бизнеса.",
     },
     {
         id: "03",
-        year: "2022",
-        title: "500+ Projects Done",
+        year: "2023",
+        title: "Данные стали новым конкурентным преимуществом",
         desc:
-            "We are constantly rethinking the future by creating the next generation of products, brands and services from a hybrid perspective.",
+            "Сегодня выигрывают не самые крупные фабрики, а компании, которые быстрее анализируют рынки, понимают спрос и принимают решения на основе информации.",
     },
     {
         id: "04",
-        year: "2024",
-        title: "Archive 1000+ Awards",
+        year: "2026",
+        title: "Искусственный интеллект меняет индустрию",
         desc:
-            "We are constantly rethinking the future by creating the next generation of products, brands and services from a hybrid perspective.",
+            "ИИ, цифровые двойники, автоматизация и аналитика в реальном времени становятся новой нормой для текстильного бизнеса.",
     },
 ];
 
@@ -73,10 +73,10 @@ const AboutS2 = () => {
                 {/* Chap ustun: sarlavha */}
                 <div className="lg:sticky lg:top-32 lg:self-start">
                     <p className="text-xs uppercase tracking-wide text-neutral-400">
-                        Started From 1972
+                        НАША МИССИЯ
                     </p>
                     <h2 className="mt-4 max-w-xs text-3xl font-light leading-snug text-neutral-900 sm:text-4xl">
-                        Our business is taking care of your business.
+                        Помогаем бизнесу видеть изменения раньше рынка.
                     </h2>
                 </div>
 

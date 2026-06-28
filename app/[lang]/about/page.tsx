@@ -10,10 +10,10 @@ const Page = () => {
     return (
         <div>
             <Pagehero
-                title="About Us"
+                title="О нас"
                 watermarkText="WTMA ANALITIC"
                 backgroundImage={bg}
-                breadcrumbs={[{label: "Home", href: "/"}, {label: "about us"}]}
+                breadcrumbs={[{label: "Главная", href: "/"}, {label: "О нас"}]}
             />
             <About_s1/>
             <AboutS2/>

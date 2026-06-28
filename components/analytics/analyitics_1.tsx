@@ -103,7 +103,7 @@ export default function Analyitics1({ post, lang }: Props) {
                     {/* Stats + FAQ */}
                     <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-8 items-start">
                         <div className="flex sm:flex-col gap-8 sm:gap-12">
-                            {post.stats.map((s) => (
+                            { post.stats.map((s) => (
                                 <CircleProgress key={s.label} percent={s.percent} value={s.value} label={s.label} />
                             ))}
                         </div>
@@ -143,10 +143,17 @@ export default function Analyitics1({ post, lang }: Props) {
 
                     {/* Our Services */}
                     <div className="border border-gray-200 p-6">
-                        <h3 className="text-base font-semibold text-gray-900 mb-3">Our Services</h3>
+                        <h3 className="text-base font-semibold text-gray-900 mb-3">Экспертные сервисы</h3>
                         <div className="border-t border-gray-200 mb-1" />
                         <ul className="flex flex-col">
-                            {post.services.map((s) => (
+                            {[
+                                { name: "Аналитика рынков", href: "#" },
+                                { name: "Индекс хлопка",    href: "#" },
+                                { name: "Архив котировок",   href: "#" },
+                                { name: "Центр экспертизы",     href: "#" },
+                                { name: "Динамика рынков",     href: "#" },
+
+                            ].map((s) => (
                                 <li key={s.name} className="border-b border-gray-100 last:border-none">
                                     <Link
                                         href={s.href}
