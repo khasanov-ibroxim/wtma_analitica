@@ -1,49 +1,64 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const Navbar = () => {
+
+
+interface Props {
+    lang: string;
+}
+
+const Navbar = ({ lang }: Props) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [searchValue, setSearchValue] = useState('');
-    const [currentTime, setCurrentTime] = useState('');
     const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
 
-    useEffect(() => {
-        const updateTime = () => {
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            setCurrentTime(`${hours}:${minutes}`);
-        };
-        updateTime();
-        const interval = setInterval(updateTime, 60000);
-        return () => clearInterval(interval);
-    }, []);
+    const navLinks = [
+        { name: 'Главная',          href: '/' },
+        { name: 'Аналитика рынков', href: `/${lang}/analytics` },
+        { name: 'Индекс хлопка',    href: `/${lang}/cotton-index` },
+        { name: 'Архив котировок',  href: `/${lang}/archive` },
+        { name: 'Центр экспертизы', href: `/${lang}/expertise` },
+        { name: 'Динамика рынка',   href: `/${lang}/market-dynamics` },
+        { name: 'Контакты',         href: `/${lang}/contact` },
+    ];
+    // Home page da emasmi
+    const isHomePage = pathname === '/';
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > window.innerHeight);
+            setScrolled(window.scrollY > 50);
         };
+        // Dastlabki holatni tekshir
+        handleScroll();
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Inner page larda navbar har doim oq va fixed
+    // Home page da: scroll bo'lmasa transparent, scroll bo'lsa oq+fixed
+    const isFixed = !isHomePage || scrolled;
+    const isSolid = !isHomePage || scrolled;
+    const showTopBar = isHomePage && !scrolled;
+
     return (
         <div
-            className={`navbar-wrapper ${scrolled ? 'navbar-fixed' : ''}`}
+            className={`navbar-wrapper ${isFixed ? 'navbar-fixed' : ''}`}
             style={{
-                position: scrolled ? 'fixed' : 'relative',
+                position: 'fixed',
                 top: 0,
                 left: 0,
                 right: 0,
                 zIndex: 50,
                 transition: 'background 0.3s ease, box-shadow 0.3s ease',
-                background: scrolled ? '#ffffff' : 'transparent',
-                boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.08)' : 'none',
+                background: isSolid ? '#ffffff' : 'transparent',
+                boxShadow: isSolid ? '0 2px 20px rgba(0,0,0,0.08)' : 'none',
             }}
         >
-            {/* ── TOP BAR (hide when scrolled) ── */}
-            {!scrolled && (
+            {/* TOP BAR — faqat home page da va scroll bo'lmagan holatda */}
+            {showTopBar && (
                 <div className="top-bar">
                     <div className="diagonal-bg" />
                     <div className="top-bar-inner">
@@ -79,17 +94,15 @@ const Navbar = () => {
                 </div>
             )}
 
-            {/* ── MAIN NAVBAR ── */}
             <header
                 className="navbar"
                 style={{
-                    background: scrolled ? '#ffffff' : undefined,
-                    borderBottom: scrolled ? '1px solid rgba(0,0,0,0.06)' : undefined,
+                    background: isSolid ? '#ffffff' : undefined,
+                    borderBottom: isSolid ? '1px solid rgba(0,0,0,0.06)' : undefined,
                 }}
             >
-                {!scrolled && <div className="diagonal-bg" />}
+                {!isSolid && <div className="diagonal-bg" />}
                 <div className="navbar-inner">
-                    {/* Left: Search */}
                     <div className="search-wrap">
                         <svg className="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                             <circle cx="11" cy="11" r="8"/>
@@ -104,25 +117,26 @@ const Navbar = () => {
                         />
                     </div>
 
-                    {/* Center: Logo */}
-                    {/*<div className="logo-wrap">*/}
-                    {/*    <Link href="/" className="logo">Adina.</Link>*/}
-                    {/*</div>*/}
-
-                    {/* Right: Nav */}
                     <ul className="nav-links">
-                        {['Главная', 'Аналитика рынков', 'Индекс хлопка', 'Архив котировок', 'Центр экспертизы','Динамика рынка','Контакты'].map((item) => (
-                            <li key={item} className={"text-center"}>
-                                <Link href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`} className="nav-link">
-                                    {item}
+                        {navLinks.map(({ name, href }) => (
+                            <li key={href} className="text-center">
+                                <Link
+                                    href={href}
+                                    className="nav-link"
+                                    style={{
+                                        color: isSolid ? undefined : '#ffffff',
+                                    }}
+                                >
+                                    {name}
                                 </Link>
                             </li>
                         ))}
                     </ul>
 
-                    {/* Mobile hamburger */}
                     <button className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"
+                             style={{ color: isSolid ? undefined : '#ffffff' }}
+                        >
                             {isMenuOpen
                                 ? <path d="M6 18L18 6M6 6l12 12"/>
                                 : <path d="M4 6h16M4 12h16M4 18h16"/>
@@ -131,17 +145,16 @@ const Navbar = () => {
                     </button>
                 </div>
 
-                {/* Mobile dropdown */}
                 {isMenuOpen && (
                     <div className="mobile-menu">
-                        {['Главная', 'Аналитика рынков', 'Индекс хлопка', 'Архив котировок', 'Центр экспертизы','Динамика рынка','Контакты'].map((item) => (
+                        {navLinks.map(({ name, href }) => (
                             <Link
-                                key={item}
-                                href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
+                                key={href}
+                                href={href}
                                 className="mobile-nav-link"
                                 onClick={() => setIsMenuOpen(false)}
                             >
-                                {item}
+                                {name}
                             </Link>
                         ))}
                     </div>

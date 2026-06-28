@@ -29,7 +29,7 @@ export default async function LangLayout({
 
     return (
         <>
-            <Navbar/>
+            <Navbar lang={lang}/>
             {children}
             <Footer/>
         </>
