@@ -1,4 +1,4 @@
-// app/[lang]/analytics/page.tsx
+// app/[lang]/expertise/page.tsx
 import { notFound } from "next/navigation";
 import Pagehero from "@/components/UI/Pagehero";
 import Analyitics1 from "@/components/analytics/analyitics_1";
@@ -9,10 +9,10 @@ interface Props {
     params: Promise<{ lang: string }>;
 }
 
-export default async function AnalyticsPage({ params }: Props) {
+export default async function ExpertisePage({ params }: Props) {
     const { lang } = await params;
 
-    const post = getPostById("analytc");
+    const post = getPostById("expertize");
     if (!post) notFound();
 
     return (
@@ -23,6 +23,7 @@ export default async function AnalyticsPage({ params }: Props) {
                 backgroundImage={bg}
                 breadcrumbs={[
                     { label: "Home", href: "/" },
+                    { label: "Аналитика рынков", href: `/${lang}/analytics` },
                     { label: post.title },
                 ]}
             />

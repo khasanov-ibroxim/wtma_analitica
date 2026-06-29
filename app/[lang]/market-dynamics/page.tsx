@@ -1,22 +1,18 @@
-// app/[lang]/analytics/[id]/page.tsx
+// app/[lang]/market-dynamics/page.tsx
 import { notFound } from "next/navigation";
 import Pagehero from "@/components/UI/Pagehero";
 import Analyitics1 from "@/components/analytics/analyitics_1";
-import { getPostById, analyticsPosts } from "@/data/analyticsData";
+import { getPostById } from "@/data/analyticsData";
 import bg from "@/assets/ui/breadcrumb.png";
 
 interface Props {
-    params: Promise<{ lang: string; id: string }>;  // ← Promise, layout singari
+    params: Promise<{ lang: string }>;
 }
 
-export async function generateStaticParams() {
-    return analyticsPosts.map((post) => ({ id: post.id }));
-}
+export default async function MarketDynamicsPage({ params }: Props) {
+    const { lang } = await params;
 
-export default async function AnalyticsDetailPage({ params }: Props) {
-    const { lang, id } = await params;  // ← await, layout singari
-
-    const post = getPostById(id);
+    const post = getPostById("dinamic");
     if (!post) notFound();
 
     return (

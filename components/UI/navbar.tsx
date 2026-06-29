@@ -16,7 +16,7 @@ const Navbar = ({ lang }: Props) => {
     const pathname = usePathname();
 
     const navLinks = [
-        { name: 'Главная',          href: '/' },
+        { name: 'Главная',          href: `/${lang}` },
         { name: 'Аналитика рынков', href: `/${lang}/analytics` },
         { name: 'Индекс хлопка',    href: `/${lang}/cotton-index` },
         { name: 'Архив котировок',  href: `/${lang}/archive` },

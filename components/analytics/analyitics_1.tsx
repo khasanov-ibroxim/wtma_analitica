@@ -122,20 +122,7 @@ export default function Analyitics1({ post, lang }: Props) {
                         ))}
                     </div>
 
-                    {/* Next Post */}
-                    <div className="flex items-center justify-between pt-6 border-t border-gray-100">
-                        <div className="grid grid-cols-3 gap-1">
-                            {Array.from({ length: 9 }).map((_, i) => (
-                                <span key={i} className="w-1.5 h-1.5 rounded-full bg-gray-400 block" />
-                            ))}
-                        </div>
-                        <Link
-                            href={`/${lang}/analytics/${nextPost.id}`}
-                            className="flex items-center gap-2 text-sm font-medium text-gray-800 hover:text-gray-600 transition-colors"
-                        >
-                            Next Post <ArrowRight />
-                        </Link>
-                    </div>
+
                 </div>
 
                 {/* RIGHT / SIDEBAR */}
