@@ -17,6 +17,7 @@ const Navbar = ({ lang }: Props) => {
 
     const navLinks = [
         { name: 'Главная',          href: `/${lang}` },
+        { name: 'О нас',          href: `/${lang}/about` },
         { name: 'Аналитика рынков', href: `/${lang}/analytics` },
         { name: 'Индекс хлопка',    href: `/${lang}/cotton-index` },
         { name: 'Архив котировок',  href: `/${lang}/archive` },
