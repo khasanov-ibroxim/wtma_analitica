@@ -134,11 +134,11 @@ export default function Analyitics1({ post, lang }: Props) {
                         <div className="border-t border-gray-200 mb-1" />
                         <ul className="flex flex-col">
                             {[
-                                { name: "Аналитика рынков", href: "#" },
-                                { name: "Индекс хлопка",    href: "#" },
-                                { name: "Архив котировок",   href: "#" },
-                                { name: "Центр экспертизы",     href: "#" },
-                                { name: "Динамика рынков",     href: "#" },
+                                { name: "Аналитика рынков", href: `/${lang}/analytics` },
+                                { name: "Индекс хлопка",    href: `/${lang}/cotton-index` },
+                                { name: "Архив котировок",   href: `/${lang}/archive` },
+                                { name: "Центр экспертизы",     href: `/${lang}/expertise` },
+                                { name: "Динамика рынков",     href: `/${lang}/market-dynamics` },
 
                             ].map((s) => (
                                 <li key={s.name} className="border-b border-gray-100 last:border-none">

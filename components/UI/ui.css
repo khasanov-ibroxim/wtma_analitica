@@ -184,7 +184,7 @@
 
     .hero-headline {
         @apply text-[250px] font-extrabold leading-[0.92] whitespace-nowrap flex-shrink-0;
-        font-family: 'Syne', sans-serif;
+        font-family: '--font-manrope', sans-serif;
         color: var(--text-dark);
         letter-spacing: -0.03em;
         display: inline-block;

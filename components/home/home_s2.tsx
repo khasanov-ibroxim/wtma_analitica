@@ -1,10 +1,13 @@
 "use client"
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from "next/link";
+import {Props} from "next/script";
 
 const panels = [
     {
         id: '01',
+        link:"/analytics",
         tag: 'Аналитика рынков',
         title: 'Аналитика рынков',
         description: 'Ключевые тренды и показатели отрасли. ',
@@ -12,6 +15,7 @@ const panels = [
     },
     {
         id: '02',
+        link:"/cotton-index",
         tag: 'Индекс хлопка ',
         title: 'Индекс хлопка ',
         description: 'Ежедневный мониторинг цен на хлопок. ',
@@ -19,6 +23,7 @@ const panels = [
     },
     {
         id: '03',
+        link:"/archive",
         tag: 'Архив котировок ',
         title: 'Архив котировок ',
         description: 'Исторические данные и аналитика цен. ',
@@ -26,6 +31,7 @@ const panels = [
     },
     {
         id: '04',
+        link:"/expertise",
         tag: 'Центр экспертизы ',
         title: 'Центр экспертизы ',
         description: 'Экспертные мнения и отраслевые оценки. ',
@@ -33,6 +39,7 @@ const panels = [
     },
     {
         id: '05',
+        link:"/market-dynamics",
         tag: 'Динамика рынка ',
         title: 'Динамика рынка ',
         description: 'Изменения рынка в режиме реального времени.',
@@ -40,7 +47,7 @@ const panels = [
     },
 ];
 
-export default function HomeS2() {
+export default function HomeS2({lang}: {lang: string})  {
     const [hovered, setHovered] = useState<number | null>(null);
 
     const activeBg = hovered !== null ? panels[hovered].image : panels[0].image;
@@ -72,7 +79,7 @@ export default function HomeS2() {
                     const isActive = hovered === i;
 
                     return (
-                        <div
+                        <Link href={`/${lang}${panel.link}`}
                             key={panel.id}
                             onMouseEnter={() => setHovered(i)}
                             onMouseLeave={() => setHovered(null)}
@@ -139,7 +146,7 @@ export default function HomeS2() {
                                     {panel.title}
                                 </h3>
                             </div>
-                        </div>
+                        </Link>
                     );
                 })}
             </div>

@@ -3,27 +3,10 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const testimonials = [
-    { id: 1, name: 'Sarah N. Newman', role: 'Founder, Newman',
-        quote: '"Our focus is on delivering superior value to our clients for company modification. Providing sustainable strategies that will upgrade their business. From strategy to delivery, we are here to make sure your business succeeds. Thinking, writing and planning with brand for more than 50 years."',
+    { id: 1, name: 'Шамсиддин Екубов', role: 'Tex Area Analytics',
+        quote: '«В 2026 году конкурентное преимущество в текстильной отрасли формируется не на уровне фабрики, а на уровне всей цепочки создания стоимости. Выигрывают компании, которые превращают данные, прозрачность и операционную дисциплину в инструмент доверия для глобальных клиентов.»',
         avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80' },
-    { id: 2, name: 'Marcus J. Williams', role: 'CEO, Brightline',
-        quote: '"Working with this team transformed our operations completely. Their strategic insight and attention to detail helped us scale faster than we ever imagined."',
-        avatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80' },
-    { id: 3, name: 'David Park', role: 'Founder, FinStack',
-        quote: '"From day one they understood our vision and helped us build financial systems that scale. Unmatched depth of knowledge in both strategy and execution."',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80' },
-    { id: 4, name: 'Priya Chandrasekaran', role: 'Director, Apex Capital',
-        quote: '"Exceptional expertise across every stage of our growth journey. The frameworks they built gave us the clarity to make bold, confident decisions."',
-        avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80' },
-    { id: 5, name: 'Lena Hoffmann', role: 'COO, Vantage EU',
-        quote: '"The consulting programme they ran was a turning point. We left with a concrete roadmap and the confidence to execute it across three continents."',
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80' },
-    { id: 6, name: 'Amara Osei', role: 'VP Strategy, Kairos',
-        quote: '"None bring this level of genuine commitment to client outcomes. Truly a long-term partner we rely on for every major decision."',
-        avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80' },
-    { id: 7, name: 'James O. Thornton', role: 'Partner, Meridian Group',
-        quote: '"Their market analysis reports are the gold standard in the industry. Rigorous, actionable, and always delivered on time."',
-        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80' },
+
 ];
 
 const logos = [

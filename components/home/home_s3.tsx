@@ -38,9 +38,17 @@ const AwardIcon = () => (
     </svg>
 );
 
+const DownloadIcon = () => (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3v12" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M7 10l5 5 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M4 19h16" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+);
+
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
-const tabs = [{title:"США" , tag:"usa"}, {title:"Саудовская Аравия" , tag:"baa"}, {title:"Япония" , tag:"japan"}, {title:"Германия" , tag:"gr"}];
+const tabs = [{title:"all" , tag: "all"},{title:"США" , tag:"usa"}, {title:"Саудовская Аравия" , tag:"baa"}, {title:"Япония" , tag:"japan"}, {title:"Германия" , tag:"gr"}];
 
 const caseStudies: Record<string, { id: number; tag: string; title: string; image: string }[]> = {
     usa: [
@@ -69,11 +77,9 @@ const caseStudies: Record<string, { id: number; tag: string; title: string; imag
 };
 
 const awards = [
-    { year: '2024', title: 'TradingTech Insight Award', location: 'Boston, Massachusetts', href: '#' },
-    { year: '2023', title: 'InvestmentNews Award', location: 'World wide', href: '#' },
-    { year: '2022', title: 'Micro Business Award', location: 'Brooklyn, NY', href: '#' },
-    { year: '2021', title: 'Finance Excellence Award', location: 'New York, NY', href: '#' },
-    { year: '2020', title: 'Global Markets Award', location: 'London, UK', href: '#' },
+    { year: '2026', title: 'Бразилия', subtitle: 'Ежемесячная динамика цен', location: 'Бразилия', zipFile: 'brazil_dayli_dinamiks.zip' },
+    { year: '2026', title: 'США', subtitle: 'Ежемесячная динамика цен', location: 'США', zipFile: 'usa_dayli_dinamiks.zip' },
+    { year: '2026', title: 'Китай', subtitle: 'Ежемесячная динамика цен', location: 'Китай', zipFile: 'china_dayli_dinamiks.zip' },
 ];
 
 // ─── CARD WIDTH: responsive ──────────────────────────────────────────────────
@@ -152,7 +158,7 @@ function CaseCard({ item, cardWidth }: { item: { tag: string; title: string; ima
 // ─── HOME S4 ─────────────────────────────────────────────────────────────────
 
 export function HomeS4() {
-    const [activeTab, setActiveTab] = useState('usa');
+    const [activeTab, setActiveTab] = useState('all');
     const [cardWidth, setCardWidth] = useState(380);
     const tabsScrollRef = useRef<HTMLDivElement>(null);
 
@@ -195,7 +201,9 @@ export function HomeS4() {
         return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
     }, [loop]);
 
-    const items = caseStudies[activeTab];
+    const items = activeTab === 'all'
+        ? Object.values(caseStudies).flat()
+        : (caseStudies[activeTab] ?? []);
     singleWidthRef.current = items.length * (cardWidth + CARD_GAP);
     const looped = [...items, ...items, ...items];
 
@@ -318,6 +326,16 @@ export function HomeS3() {
         return () => window.removeEventListener('resize', check);
     }, []);
 
+    // Fayl /public/downloads/ papkasida yotadi, masalan: /public/downloads/brazil_dayli_dinamiks.zip
+    const handleDownload = (zipFile: string) => {
+        const link = document.createElement('a');
+        link.href = `/downloads/${zipFile}`;
+        link.download = zipFile;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <section className="w-full bg-white py-16 sm:py-24 lg:py-36 font-sans overflow-hidden max-w-full">
             <div className="mx-auto px-4 sm:px-8 lg:px-16 max-w-[1400px] w-full">
@@ -343,6 +361,7 @@ export function HomeS3() {
                                 onMouseEnter={() => !isMobile && setHoveredIndex(i)}
                                 onMouseLeave={() => !isMobile && setHoveredIndex(null)}
                                 onTouchStart={() => isMobile && setHoveredIndex(i === hoveredIndex ? null : i)}
+                                onClick={() => handleDownload(award.zipFile)}
                                 className="relative cursor-pointer"
                                 style={{ borderTop: i === 0 ? '1px solid #e5e7eb' : 'none' }}
                             >
@@ -370,6 +389,9 @@ export function HomeS3() {
                                         className="flex-1 text-xl sm:text-2xl lg:text-4xl font-semibold leading-snug min-w-0"
                                     >
                                         {award.title}
+                                        <span className="block text-sm sm:text-base lg:text-lg font-normal text-gray-400 mt-1">
+                                            {award.subtitle}
+                                        </span>
                                     </motion.h3>
 
                                     {/* Floating badge */}
@@ -386,7 +408,7 @@ export function HomeS3() {
                                                     border: '2px solid rgba(255,255,255,0.12)',
                                                 }}
                                             >
-                                                <AwardIcon />
+                                                <DownloadIcon />
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
@@ -401,11 +423,11 @@ export function HomeS3() {
 
                                     {/* Arrow */}
                                     <motion.a
-                                        href={award.href}
+                                        href={`/downloads/${award.zipFile}`}
                                         animate={{ color: isHovered ? '#111827' : '#9ca3af' }}
                                         transition={{ duration: 0.25 }}
                                         className="shrink-0 p-1"
-                                        onClick={(e) => e.preventDefault()}
+                                        onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleDownload(award.zipFile); }}
                                     >
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                                              stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

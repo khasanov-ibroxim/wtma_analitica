@@ -134,34 +134,37 @@ export default function HomeS7() {
                         transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
                         className="flex-1 flex flex-col justify-center px-0 lg:px-12 xl:px-16 py-6 lg:py-0 gap-8"
                     >
+                        <strong className={"text-2xl"}>«Будущее принадлежит тем, кто способен понимать рынок быстрее, чем он меняется.»</strong>
                         <p
-                            className="text-[#1B222C] leading-[1.75]"
+                            className="text-[#1B222C] "
                             style={{ fontSize: 'clamp(15px, 1.35vw, 19px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
                         >
-                            Our focus is on delivering superior value to our clients for company modification. Providing sustainable{' '}
-                            <strong className="font-semibold">strategies</strong> that will upgrade their business. From strategy to delivery, we are here to make sure your{' '}
-                            <strong className="font-semibold">business</strong> succeeds. Thinking, writing and planning with brand for more than{' '}
-                            <strong className="font-semibold">50 years.</strong>
+                            Сегодня аналитика становится основой стратегического лидерства в мировой текстильной индустрии. Изменения в глобальной торговле, производстве и потребительском спросе требуют от бизнеса новых подходов к принятию решений и управлению развитием.
                         </p>
 
                         <div className="w-12 h-px bg-[#1B222C]/20" />
 
                         <p
-                            className="text-[#6b7280] leading-[1.8]"
+                            className="text-[#6b7280] p-0 m-0"
                             style={{ fontSize: 'clamp(14px, 1.2vw, 17px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
                         >
-                            We are constantly rethinking the way we work and deliver value. Our team of experts brings fresh perspectives to every challenge, ensuring that each client receives tailored solutions that drive real, measurable results.
+                            В Tex Area Analytics мы объединяем отраслевую экспертизу, современные методы исследования и глубокое понимание международных рынков, чтобы помогать компаниям видеть перспективы раньше конкурентов и уверенно адаптироваться к новым экономическим реалиям.
                         </p>
+    <p>Наша цель — предоставлять не просто данные, а интеллектуальные решения, способные формировать устойчивые конкурентные преимущества и открывать новые возможности для роста на глобальном рынке.</p>
+                        <p
+                            className="text-[#6b7280] "
+                            style={{ fontSize: 'clamp(14px, 1.2vw, 17px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
+                        >
+                            Шамсиддин Ёкубов <br/>
+                            Основатель Tex Area Analytics
 
-                        <Link href={"#"} className={"flex gap-1 border-[1px] w-[140px] border-black/20 items-center justify-center p-2"}>
-                            Get in touch <ArrowUpRight />
-                        </Link>
+                        </p>
                     </motion.div>
 
                     {/* RIGHT: Stats */}
                     <div className="w-full lg:w-[24%] shrink-0 flex flex-row lg:flex-col justify-around lg:justify-center gap-8 lg:gap-12 lg:pl-10 xl:pl-14 lg:border-l border-t lg:border-t-0 border-[#e5e7eb] pt-8 lg:pt-0">
-                        <StatCard value={95} suffix="%" label="Clients Satisfied and Repeating" delay={0.2} />
-                        <StatCard value={125} suffix="k" label="Projects Done" delay={0.35} />
+                        <StatCard value={10} suffix="+" label="опыт в маркетинге" delay={0.2} />
+                        <StatCard value={90} suffix="+" label="фабрик отрасли" delay={0.35} />
                     </div>
 
                 </div>

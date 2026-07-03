@@ -79,7 +79,7 @@ export default function HomeS1() {
                                                     <button
                                                         className="inline-flex items-center gap-2 bg-gray-900 text-white text-sm font-medium px-5 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200"
                                                     >
-                                                        Read More
+                                                        блог информация
                                                         <svg width="12" height="12" viewBox="0 0 13 13" fill="none">
                                                             <path d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5"
                                                                   stroke="currentColor" strokeWidth="1.8"
@@ -175,7 +175,7 @@ export default function HomeS1() {
                                                             onClick={(e) => e.stopPropagation()}
                                                             className="inline-flex items-center gap-2 bg-gray-900 text-white text-sm font-medium px-5 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200"
                                                         >
-                                                            Read More
+                                                            блог информация
                                                             <svg width="12" height="12" viewBox="0 0 13 13" fill="none">
                                                                 <path d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5"
                                                                       stroke="currentColor" strokeWidth="1.8"
