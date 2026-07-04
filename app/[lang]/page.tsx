@@ -19,7 +19,7 @@ export default async function Page({ params }: Props) {
             <HeaderBottom />
             <HomeS1/>
             <HomeS2 lang={lang}/>
-            <HomeS3/>
+            <HomeS3 lang={lang}/>
             <HomeS5/>
             <HomeS6/>
             <HomeS7/>

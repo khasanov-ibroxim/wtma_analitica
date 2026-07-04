@@ -1,32 +1,45 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-
-
+import { analyticsItems } from "@/data/analytics";
+import Image from "next/image";
+import logo from "@/assets/logoWidth.png"
 interface Props {
     lang: string;
 }
 
 const Navbar = ({ lang }: Props) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [searchValue, setSearchValue] = useState('');
     const [scrolled, setScrolled] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0 });
+    const [mounted, setMounted] = useState(false);
+
+    const analyticsTriggerRef = useRef<HTMLLIElement>(null);
+    const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
     const pathname = usePathname();
 
     const navLinks = [
         { name: 'Главная',          href: `/${lang}` },
         { name: 'О нас',          href: `/${lang}/about` },
-        { name: 'Аналитика рынков', href: `/${lang}/analytics` },
+        { name: 'Блог',          href: `/${lang}/blog` },
+        { name: 'Аналитика рынков', href: ``, key: 'analytics' },
         { name: 'Индекс хлопка',    href: `/${lang}/cotton-index` },
         { name: 'Архив котировок',  href: `/${lang}/archive` },
         { name: 'Центр экспертизы', href: `/${lang}/expertise` },
         { name: 'Динамика рынка',   href: `/${lang}/market-dynamics` },
         { name: 'Контакты',         href: `/${lang}/contact` },
     ];
+
     // Home page da emasmi
     const isHomePage = pathname === '/';
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -38,11 +51,90 @@ const Navbar = ({ lang }: Props) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const clearCloseTimer = () => {
+        if (closeTimer.current) {
+            clearTimeout(closeTimer.current);
+            closeTimer.current = null;
+        }
+    };
+
+    const openDropdown = () => {
+        clearCloseTimer();
+        const rect = analyticsTriggerRef.current?.getBoundingClientRect();
+        if (rect) {
+            setDropdownPos({
+                top: rect.bottom + 8,
+                left: rect.left + rect.width / 2,
+            });
+        }
+        setIsDropdownOpen(true);
+    };
+
+    const scheduleCloseDropdown = () => {
+        clearCloseTimer();
+        closeTimer.current = setTimeout(() => setIsDropdownOpen(false), 150);
+    };
+
+    // Scroll/resize bo'lganda dropdown pozitsiyasini yopib qo'yamiz (qayta hover qilinganda to'g'ri joyda chiqadi)
+    useEffect(() => {
+        if (!isDropdownOpen) return;
+        const close = () => setIsDropdownOpen(false);
+        window.addEventListener('scroll', close, { passive: true });
+        window.addEventListener('resize', close);
+        return () => {
+            window.removeEventListener('scroll', close);
+            window.removeEventListener('resize', close);
+        };
+    }, [isDropdownOpen]);
+
     // Inner page larda navbar har doim oq va fixed
     // Home page da: scroll bo'lmasa transparent, scroll bo'lsa oq+fixed
     const isFixed = !isHomePage || scrolled;
     const isSolid = !isHomePage || scrolled;
     const showTopBar = isHomePage && !scrolled;
+
+    const dropdownMenu = isDropdownOpen && (
+        <ul
+            onMouseEnter={clearCloseTimer}
+            onMouseLeave={scheduleCloseDropdown}
+            style={{
+                position: 'fixed',
+                top: dropdownPos.top,
+                left: dropdownPos.left,
+                transform: 'translateX(-50%)',
+                minWidth: 280,
+                background: '#ffffff',
+                borderRadius: 10,
+                boxShadow: '0 12px 30px rgba(0,0,0,0.18)',
+                padding: '8px 0',
+                listStyle: 'none',
+                margin: 0,
+                zIndex: 9999,
+            }}
+        >
+            {analyticsItems.map((item) => (
+                <li key={item.id}>
+                    <Link
+                        href={`/${lang}/analytics/${item.id}`}
+                        onClick={() => setIsDropdownOpen(false)}
+                        style={{
+                            display: 'block',
+                            padding: '10px 18px',
+                            color: '#1a1a1a',
+                            fontSize: 14,
+                            whiteSpace: 'nowrap',
+                            textAlign: 'left',
+                            transition: 'background 0.15s ease',
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.background = '#f5f2fb')}
+                        onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+                    >
+                        {item.title}
+                    </Link>
+                </li>
+            ))}
+        </ul>
+    );
 
     return (
         <div
@@ -104,23 +196,16 @@ const Navbar = ({ lang }: Props) => {
             >
                 {!isSolid && <div className="diagonal-bg" />}
                 <div className="navbar-inner">
-                    <div className="search-wrap">
-                        <svg className="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                            <circle cx="11" cy="11" r="8"/>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                        </svg>
-                        <input
-                            type="text"
-                            className="search-input"
-                            placeholder="Search here..."
-                            value={searchValue}
-                            onChange={(e) => setSearchValue(e.target.value)}
-                        />
-                    </div>
-
+<Image src={logo} alt={"asd"} height={100} width={150}/>
                     <ul className="nav-links">
-                        {navLinks.map(({ name, href }) => (
-                            <li key={href} className="text-center">
+                        {navLinks.map(({ name, href, key }) => (
+                            <li
+                                key={href}
+                                className="text-center"
+                                ref={key === 'analytics' ? analyticsTriggerRef : undefined}
+                                onMouseEnter={key === 'analytics' ? openDropdown : undefined}
+                                onMouseLeave={key === 'analytics' ? scheduleCloseDropdown : undefined}
+                            >
                                 <Link
                                     href={href}
                                     className="nav-link"
@@ -148,19 +233,40 @@ const Navbar = ({ lang }: Props) => {
 
                 {isMenuOpen && (
                     <div className="mobile-menu">
-                        {navLinks.map(({ name, href }) => (
-                            <Link
-                                key={href}
-                                href={href}
-                                className="mobile-nav-link"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                {name}
-                            </Link>
+                        {navLinks.map(({ name, href, key }) => (
+                            <React.Fragment key={href}>
+                                <Link
+                                    href={href}
+                                    className="mobile-nav-link"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    {name}
+                                </Link>
+                                {key === 'analytics' && (
+                                    <div style={{ paddingLeft: 16 }}>
+                                        {analyticsItems.map((item) => (
+                                            <Link
+                                                key={item.id}
+                                                href={`/${lang}/analytics/${item.id}`}
+                                                className="mobile-nav-link"
+                                                style={{ fontSize: 13, opacity: 0.8 }}
+                                                onClick={() => setIsMenuOpen(false)}
+                                            >
+                                                {item.title}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </React.Fragment>
                         ))}
                     </div>
                 )}
             </header>
+
+            {/* Dropdown document.body ga portal qilinadi — shu tufayli navbar/header ichidagi
+                overflow:hidden yoki stacking-context (masalan diagonal-bg effekti) uni kesib
+                tashlay olmaydi. */}
+            {mounted && dropdownMenu && createPortal(dropdownMenu, document.body)}
         </div>
     );
 };

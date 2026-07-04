@@ -7,6 +7,7 @@ import gr_img from "@/assets/home/home_s3/gr.jpg"
 import japan_img from "@/assets/home/home_s3/japan.jpg"
 import marokka_img from "@/assets/home/home_s3/marokka.jpg"
 import {StaticImageData} from "next/image";
+import Link from "next/link";
 
 // ─── ICONS ──────────────────────────────────────────────────────────────────
 
@@ -56,23 +57,6 @@ const DownloadIcon = () => (
 
 const tabs = [{title:"Все" , tag: "all"},{title:"США" , tag:"usa"}, {title:"Саудовская Аравия" , tag:"baa"}, {title:"Япония" , tag:"japan"}, {title:"Германия" , tag:"gr"}, {title:"Марокко" , tag:"mr"}];
 
-const caseStudies: Record<string, { id: number; tag: string; title: string; image: StaticImageData }[]> = {
-    usa: [
-        { id: 1, tag: 'usa', title: 'Market data deep-dive for a leading investment firm', image: usa_img },
-    ],
-    baa: [
-        { id: 1, tag: 'baa', title: 'Strategic growth plan for mid-market retailer', image: baa_img },
-    ],
-    japan: [
-        { id: 1, tag: 'japan', title: 'Transformation roadmap for global bank', image: japan_img}
-    ],
-    gr: [
-        { id: 1, tag: 'gr', title: 'Transformation roadmap for global bank', image: gr_img },
-    ],
-    mr: [
-        { id: 1, tag: 'mr', title: 'Transformation roadmap for global bank', image: marokka_img },
-    ]
-};
 
 const awards = [
     { year: '2026', title: 'США', subtitle: 'Ежемесячная динамика цен', location: 'США', zipFile: 'usa/USA_2026.zip' },
@@ -99,12 +83,12 @@ function getCardHeight() {
 // Rasm to'liq ko'rinishi uchun object-contain ishlatiladi (kesilmaydi),
 // karta o'lchami rasmning haqiqiy aspect ratio'siga qarab hisoblanadi.
 
-function CaseCard({ item, cardHeight }: { item: { tag: string; title: string; image: StaticImageData }; cardHeight: number }) {
+function CaseCard({ item, cardHeight }: { item: { tag: string; title: string; image: StaticImageData , link:string}; cardHeight: number }) {
     const [hovered, setHovered] = useState(false);
     const cardWidth = Math.round(cardHeight * IMAGE_ASPECT);
 
     return (
-        <div
+        <Link href={item.link}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             className="relative shrink-0 overflow-hidden bg-[#0a0e1a]"
@@ -130,13 +114,13 @@ function CaseCard({ item, cardHeight }: { item: { tag: string; title: string; im
             >
                 <ArrowUpRight size={14} className="text-gray-900" />
             </motion.div>
-        </div>
+        </Link>
     );
 }
 
 // ─── HOME S4 ─────────────────────────────────────────────────────────────────
 
-export function HomeS4() {
+export function HomeS4({lang}: { lang: string }) {
     const [activeTab, setActiveTab] = useState('all');
     const [cardHeight, setCardHeight] = useState(420);
     const tabsScrollRef = useRef<HTMLDivElement>(null);
@@ -149,6 +133,23 @@ export function HomeS4() {
     const rafRef = useRef<number | null>(null);
     const singleWidthRef = useRef(0);
     const itemsCountRef = useRef(0);
+    const caseStudies: Record<string, { id: number; tag: string; title: string; image: StaticImageData ; link:string }[]> = {
+        usa: [
+            { id: 1, tag: 'usa', title: 'Market data deep-dive for a leading investment firm', image: usa_img , link:`${lang}/analytics/usa-market-analysis`},
+        ],
+        baa: [
+            { id: 1, tag: 'baa', title: 'Strategic growth plan for mid-market retailer', image: baa_img , link:`${lang}/analytics/baa-market-analysis`},
+        ],
+        japan: [
+            { id: 1, tag: 'japan', title: 'Transformation roadmap for global bank', image: japan_img, link:`${lang}/analytics/japan-market-analysis`}
+        ],
+        gr: [
+            { id: 1, tag: 'gr', title: 'Transformation roadmap for global bank', image: gr_img, link:`${lang}/analytics/gr-market-analysis` },
+        ],
+        mr: [
+            { id: 1, tag: 'mr', title: 'Transformation roadmap for global bank', image: marokka_img, link:`${lang}/analytics/mr-market-analysis` },
+        ]
+    };
 
     useEffect(() => {
         const update = () => setCardHeight(getCardHeight());
@@ -257,14 +258,6 @@ export function HomeS4() {
                             </button>
                         ))}
                     </div>
-
-                    <button
-                        className="hidden xs:flex items-center gap-1.5 text-xs sm:text-sm font-medium text-gray-700 border border-gray-300 px-3 sm:px-4 py-2 mb-2 shrink-0 hover:bg-gray-50 transition-colors duration-200 whitespace-nowrap"
-                        style={{ borderRadius: 0 }}
-                    >
-                        <span className="hidden sm:inline">More Works</span>
-                        <ArrowUpRight size={14} />
-                    </button>
                 </div>
             </div>
 
@@ -288,11 +281,6 @@ export function HomeS4() {
                 </div>
             </div>
 
-            <div className="xs:hidden flex justify-center pb-10 pt-2">
-                <button className="flex items-center gap-1.5 text-sm font-medium text-gray-700 border border-gray-300 px-5 py-2.5">
-                    More Works <ArrowUpRight size={14} />
-                </button>
-            </div>
         </section>
     );
 }
@@ -420,11 +408,11 @@ export function HomeS3() {
 
 // ─── DEFAULT EXPORT (preview both) ───────────────────────────────────────────
 
-export default function HomeSections() {
+export default function HomeSections({lang}:{lang:string}) {
     return (
         <main className="min-h-screen bg-white">
             <HomeS3 />
-            <HomeS4 />
+            <HomeS4  lang={lang}/>
         </main>
     );
 }
