@@ -15,7 +15,7 @@ export default async function CottonIndexPage({ params }: Props) {
 
     const post = getPostById("cotton");
     if (!post) notFound();
-    const indexSer: ServiceLink[] = [
+    const indexSer = [
         { name: "США ", children:[
                 {name:"США_2026" , href:"/downloads/usa/USA_2026.zip"},
             ]},

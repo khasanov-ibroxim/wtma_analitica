@@ -15,7 +15,7 @@ export default async function ArchivePage({ params }: Props) {
 
     const post = getPostById("analytics_copy");
     if (!post) notFound();
-    const archiveSer: ServiceLink[] = [
+    const archiveSer = [
         { name: "США ", children:[
 
                 {name:"США_2025" , href:"/downloads/usa/USA_2025.zip"},
