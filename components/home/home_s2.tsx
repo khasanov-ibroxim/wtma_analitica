@@ -65,7 +65,7 @@ export default function HomeS2({lang}: {lang: string})  {
             {/* ── SINGLE BACKGROUND IMAGE (crossfade) ── */}
             <AnimatePresence>
                 <motion.div
-                    key={activeBg}
+                    key={activeBg.src}
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${activeBg.src})` }}
                     initial={{ opacity: 0 }}
