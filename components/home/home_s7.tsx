@@ -143,16 +143,19 @@ export default function HomeS7() {
                         </p>
 
                         <div className="w-12 h-px bg-[#1B222C]/20" />
-
                         <p
-                            className="text-[#6b7280] p-0 m-0"
-                            style={{ fontSize: 'clamp(14px, 1.2vw, 17px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
+                            className="text-[#1B222C] "
+                            style={{ fontSize: 'clamp(15px, 1.35vw, 19px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
                         >
                             В Tex Area Analytics мы объединяем отраслевую экспертизу, современные методы исследования и глубокое понимание международных рынков, чтобы помогать компаниям видеть перспективы раньше конкурентов и уверенно адаптироваться к новым экономическим реалиям.
-                        </p>
-    <p>Наша цель — предоставлять не просто данные, а интеллектуальные решения, способные формировать устойчивые конкурентные преимущества и открывать новые возможности для роста на глобальном рынке.</p>
-                        <p
-                            className="text-[#6b7280] "
+                        </p>  <p
+                            className="text-[#1B222C] "
+                            style={{ fontSize: 'clamp(15px, 1.35vw, 19px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
+                        >
+                        Наша цель — предоставлять не просто данные, а интеллектуальные решения, способные формировать устойчивые конкурентные преимущества и открывать новые возможности для роста на глобальном рынке.
+                    </p>
+                      <p
+                            className="text-[#6b7280] mt-14"
                             style={{ fontSize: 'clamp(14px, 1.2vw, 17px)', fontFamily: '"DM Sans", sans-serif', fontWeight: 400 }}
                         >
                             Шамсиддин Ёкубов <br/>
@@ -163,7 +166,7 @@ export default function HomeS7() {
 
                     {/* RIGHT: Stats */}
                     <div className="w-full lg:w-[24%] shrink-0 flex flex-row lg:flex-col justify-around lg:justify-center gap-8 lg:gap-12 lg:pl-10 xl:pl-14 lg:border-l border-t lg:border-t-0 border-[#e5e7eb] pt-8 lg:pt-0">
-                        <StatCard value={10} suffix="+" label="опыт в маркетинге" delay={0.2} />
+                        <StatCard value={10} suffix="+ " label=" лет опыта в маркетинге" delay={0.2} />
                         <StatCard value={90} suffix="+" label="фабрик отрасли" delay={0.35} />
                     </div>
 

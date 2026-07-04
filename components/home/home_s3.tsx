@@ -1,6 +1,12 @@
 "use client"
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import usa_img from "@/assets/home/home_s3/usa.jpg"
+import baa_img from "@/assets/home/home_s3/baa.jpg"
+import gr_img from "@/assets/home/home_s3/gr.jpg"
+import japan_img from "@/assets/home/home_s3/japan.jpg"
+import marokka_img from "@/assets/home/home_s3/marokka.jpg"
+import {StaticImageData} from "next/image";
 
 // ─── ICONS ──────────────────────────────────────────────────────────────────
 
@@ -48,109 +54,82 @@ const DownloadIcon = () => (
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
-const tabs = [{title:"Все" , tag: "all"},{title:"США" , tag:"usa"}, {title:"Саудовская Аравия" , tag:"baa"}, {title:"Япония" , tag:"japan"}, {title:"Германия" , tag:"gr"}];
+const tabs = [{title:"Все" , tag: "all"},{title:"США" , tag:"usa"}, {title:"Саудовская Аравия" , tag:"baa"}, {title:"Япония" , tag:"japan"}, {title:"Германия" , tag:"gr"}, {title:"Марокко" , tag:"mr"}];
 
-const caseStudies: Record<string, { id: number; tag: string; title: string; image: string }[]> = {
+const caseStudies: Record<string, { id: number; tag: string; title: string; image: StaticImageData }[]> = {
     usa: [
-        { id: 1, tag: 'usa', title: 'Market data deep-dive for a leading investment firm', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80' },
-        { id: 2, tag: 'usa', title: 'Competitive intelligence platform build-out', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80' },
-        { id: 3, tag: 'usa', title: 'Quantitative risk model for hedge fund portfolio', image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80' },
-        { id: 4, tag: 'usa', title: 'Consumer behaviour analytics redesign', image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80' },
-        { id: 5, tag: 'usa', title: 'Real-time dashboard for financial KPIs', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80' },
+        { id: 1, tag: 'usa', title: 'Market data deep-dive for a leading investment firm', image: usa_img },
     ],
     baa: [
-        { id: 1, tag: 'baa', title: 'Strategic growth plan for mid-market retailer', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80' },
-        { id: 2, tag: 'baa', title: 'Operational efficiency audit — logistics sector', image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80' },
-        { id: 3, tag: 'baa', title: 'Go-to-market strategy for SaaS startup', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80' },
-        { id: 4, tag: 'baa', title: 'M&A due-diligence support for tech acquirer', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80' },
+        { id: 1, tag: 'baa', title: 'Strategic growth plan for mid-market retailer', image: baa_img },
     ],
     japan: [
-        { id: 1, tag: 'japan', title: 'Transformation roadmap for global bank', image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80' },
-        { id: 2, tag: 'japan', title: 'Change management programme — pharma', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80' },
-        { id: 3, tag: 'japan', title: 'Digital strategy advisory for media group', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80' },
+        { id: 1, tag: 'japan', title: 'Transformation roadmap for global bank', image: japan_img}
     ],
     gr: [
-        { id: 1, tag: 'gr', title: 'Transformation roadmap for global bank', image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=800&q=80' },
-        { id: 2, tag: 'gr', title: 'Change management programme — pharma', image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80' },
-        { id: 3, tag: 'gr', title: 'Digital strategy advisory for media group', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80' },
+        { id: 1, tag: 'gr', title: 'Transformation roadmap for global bank', image: gr_img },
+    ],
+    mr: [
+        { id: 1, tag: 'mr', title: 'Transformation roadmap for global bank', image: marokka_img },
     ]
 };
 
 const awards = [
-    { year: '2026', title: 'Бразилия', subtitle: 'Ежемесячная динамика цен', location: 'Бразилия', zipFile: 'brazil_dayli_dinamiks.zip' },
-    { year: '2026', title: 'США', subtitle: 'Ежемесячная динамика цен', location: 'США', zipFile: 'usa_dayli_dinamiks.zip' },
+    { year: '2026', title: 'США', subtitle: 'Ежемесячная динамика цен', location: 'США', zipFile: 'usa/USA_2026.zip' },
     { year: '2026', title: 'Китай', subtitle: 'Ежемесячная динамика цен', location: 'Китай', zipFile: 'china_dayli_dinamiks.zip' },
+    { year: '2026', title: 'Бразилия', subtitle: 'Ежемесячная динамика цен', location: 'Бразилия', zipFile: 'br/Brazil_2026.zip' },
 ];
 
-// ─── CARD WIDTH: responsive ──────────────────────────────────────────────────
-const CARD_GAP = 16;
-const SPEED = 0.1;
+// ─── IMAGE NATURAL ASPECT RATIO: rasm o'lchami 2360x1400 (McKinsey-uslubidagi taqdimot muqovalari) ──
+const IMAGE_ASPECT = 2360 / 1400;
 
-function getCardWidth() {
-    if (typeof window === 'undefined') return 320;
-    if (window.innerWidth < 480) return Math.min(window.innerWidth - 48, 300);
-    if (window.innerWidth < 768) return 320;
-    return 380;
+// ─── CARD WIDTH: responsive, rasm balandligiga qarab hisoblanadi ───────────────
+const CARD_GAP = 16;
+const SPEED = 0.7;
+
+function getCardHeight() {
+    if (typeof window === 'undefined') return 380;
+    if (window.innerWidth < 480) return 220;
+    if (window.innerWidth < 768) return 300;
+    if (window.innerWidth < 1024) return 360;
+    return 420;
 }
 
 // ─── CASE CARD ───────────────────────────────────────────────────────────────
+// Rasm to'liq ko'rinishi uchun object-contain ishlatiladi (kesilmaydi),
+// karta o'lchami rasmning haqiqiy aspect ratio'siga qarab hisoblanadi.
 
-function CaseCard({ item, cardWidth }: { item: { tag: string; title: string; image: string }; cardWidth: number }) {
+function CaseCard({ item, cardHeight }: { item: { tag: string; title: string; image: StaticImageData }; cardHeight: number }) {
     const [hovered, setHovered] = useState(false);
-    console.log(item)
+    const cardWidth = Math.round(cardHeight * IMAGE_ASPECT);
+
     return (
         <div
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className="relative shrink-0 overflow-hidden"
-            style={{ width: cardWidth, height: cardWidth < 340 ? 360 : 460, cursor: 'pointer' }}
+            className="relative shrink-0 overflow-hidden bg-[#0a0e1a]"
+            style={{ width: cardWidth, height: cardHeight, cursor: 'pointer' }}
         >
-            <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
                 <motion.img
-                    src={item.image}
+                    src={item.image.src}
                     alt={item.title}
-                    className="w-full h-full object-cover"
-                    animate={{ scale: hovered ? 1.05 : 1 }}
+                    className="w-full h-full object-contain"
+                    animate={{ scale: hovered ? 1.03 : 1 }}
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     draggable={false}
                 />
             </div>
 
-            <div className="absolute inset-0 z-10"
-                 style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 55%)' }} />
-
-            {/* Tag */}
-            <div className="absolute top-4 left-4 z-20">
-        <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/80 bg-white/10 backdrop-blur-sm px-3 py-1.5">
-          {item.tag}
-        </span>
-            </div>
-
             {/* Arrow */}
             <motion.div
-                className="absolute top-4 right-4 z-20 w-8 h-8 bg-white flex items-center justify-center"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-7 h-7 sm:w-8 sm:h-8 bg-white flex items-center justify-center"
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.7 }}
                 transition={{ duration: 0.25 }}
             >
                 <ArrowUpRight size={14} className="text-gray-900" />
             </motion.div>
-
-            {/* Bottom */}
-            <div className="absolute bottom-0 left-0 right-0 z-20 px-5 pb-6">
-                <h3 className="text-white text-base font-semibold leading-snug">{item.title}</h3>
-                <motion.div
-                    initial={false}
-                    animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 10, height: hovered ? 'auto' : 0 }}
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className="overflow-hidden"
-                >
-                    <div className="pt-2.5 flex items-center gap-1.5 text-white/60 text-sm font-medium">
-                        <span>View case study</span>
-                        <ArrowUpRight size={12} />
-                    </div>
-                </motion.div>
-            </div>
         </div>
     );
 }
@@ -159,7 +138,7 @@ function CaseCard({ item, cardWidth }: { item: { tag: string; title: string; ima
 
 export function HomeS4() {
     const [activeTab, setActiveTab] = useState('all');
-    const [cardWidth, setCardWidth] = useState(380);
+    const [cardHeight, setCardHeight] = useState(420);
     const tabsScrollRef = useRef<HTMLDivElement>(null);
 
     const trackRef = useRef<HTMLDivElement>(null);
@@ -169,9 +148,10 @@ export function HomeS4() {
     const dragStartOffsetRef = useRef(0);
     const rafRef = useRef<number | null>(null);
     const singleWidthRef = useRef(0);
+    const itemsCountRef = useRef(0);
 
     useEffect(() => {
-        const update = () => setCardWidth(getCardWidth());
+        const update = () => setCardHeight(getCardHeight());
         update();
         window.addEventListener('resize', update);
         return () => window.removeEventListener('resize', update);
@@ -188,7 +168,8 @@ export function HomeS4() {
 
     const loop = useCallback(() => {
         const sw = singleWidthRef.current;
-        if (!isDraggingRef.current && sw > 0) {
+        const canLoop = itemsCountRef.current > 1;
+        if (!isDraggingRef.current && sw > 0 && canLoop) {
             offsetRef.current -= SPEED;
             if (offsetRef.current <= -sw) offsetRef.current += sw;
             applyTransform();
@@ -204,10 +185,16 @@ export function HomeS4() {
     const items = activeTab === 'all'
         ? Object.values(caseStudies).flat()
         : (caseStudies[activeTab] ?? []);
+
+    itemsCountRef.current = items.length;
+    const cardWidth = Math.round(cardHeight * IMAGE_ASPECT);
     singleWidthRef.current = items.length * (cardWidth + CARD_GAP);
-    const looped = [...items, ...items, ...items];
+
+    const looped = items.length > 1 ? [...items, ...items, ...items] : items;
+    const isLoopable = items.length > 1;
 
     const onPointerDown = (e: React.PointerEvent) => {
+        if (!isLoopable) return;
         isDraggingRef.current = true;
         dragStartXRef.current = e.clientX;
         dragStartOffsetRef.current = offsetRef.current;
@@ -215,7 +202,7 @@ export function HomeS4() {
     };
 
     const onPointerMove = (e: React.PointerEvent) => {
-        if (!isDraggingRef.current) return;
+        if (!isDraggingRef.current || !isLoopable) return;
         const sw = singleWidthRef.current;
         let next = dragStartOffsetRef.current + (e.clientX - dragStartXRef.current);
         if (next <= -sw) next += sw;
@@ -242,7 +229,6 @@ export function HomeS4() {
 
                 {/* Tabs row */}
                 <div className="flex items-end justify-between border-b border-gray-200 gap-2">
-                    {/* Scrollable tabs */}
                     <div
                         ref={tabsScrollRef}
                         className="flex items-center gap-0.5 overflow-x-auto scrollbar-none flex-1 min-w-0"
@@ -272,7 +258,6 @@ export function HomeS4() {
                         ))}
                     </div>
 
-                    {/* More works button — hidden on very small screens, icon-only on sm */}
                     <button
                         className="hidden xs:flex items-center gap-1.5 text-xs sm:text-sm font-medium text-gray-700 border border-gray-300 px-3 sm:px-4 py-2 mb-2 shrink-0 hover:bg-gray-50 transition-colors duration-200 whitespace-nowrap"
                         style={{ borderRadius: 0 }}
@@ -285,7 +270,7 @@ export function HomeS4() {
 
             {/* Swiper */}
             <div
-                className="relative w-full overflow-hidden mt-5 sm:mt-6 cursor-grab active:cursor-grabbing select-none"
+                className={`relative w-full overflow-hidden mt-5 sm:mt-6 select-none ${isLoopable ? 'cursor-grab active:cursor-grabbing' : ''}`}
                 style={{ paddingLeft: 16, paddingBottom: 40 }}
                 onPointerDown={onPointerDown}
                 onPointerMove={onPointerMove}
@@ -298,12 +283,11 @@ export function HomeS4() {
                     style={{ gap: CARD_GAP, willChange: 'transform' }}
                 >
                     {looped.map((item, i) => (
-                        <CaseCard key={`${activeTab}-${item.id}-${i}`} item={item} cardWidth={cardWidth} />
+                        <CaseCard key={`${activeTab}-${item.id}-${i}`} item={item} cardHeight={cardHeight} />
                     ))}
                 </div>
             </div>
 
-            {/* Mobile "More Works" link */}
             <div className="xs:hidden flex justify-center pb-10 pt-2">
                 <button className="flex items-center gap-1.5 text-sm font-medium text-gray-700 border border-gray-300 px-5 py-2.5">
                     More Works <ArrowUpRight size={14} />
@@ -326,10 +310,9 @@ export function HomeS3() {
         return () => window.removeEventListener('resize', check);
     }, []);
 
-    // Fayl /public/downloads/ papkasida yotadi, masalan: /public/downloads/brazil_dayli_dinamiks.zip
     const handleDownload = (zipFile: string) => {
         const link = document.createElement('a');
-        link.href = `/downloads/${zipFile}`;
+        link.href = `downloads/${zipFile}`;
         link.download = zipFile;
         document.body.appendChild(link);
         link.click();
@@ -340,7 +323,6 @@ export function HomeS3() {
         <section className="w-full bg-white py-16 sm:py-24 lg:py-36 font-sans overflow-hidden max-w-full">
             <div className="mx-auto px-4 sm:px-8 lg:px-16 max-w-[1400px] w-full">
 
-                {/* Header */}
                 <div className="text-center mb-12 sm:mb-16 lg:mb-20">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-400 mb-3 sm:mb-4">
                         МОНИТОРИНГ
@@ -350,7 +332,6 @@ export function HomeS3() {
                     </h2>
                 </div>
 
-                {/* Awards list */}
                 <div className="relative">
                     {awards.map((award, i) => {
                         const isHovered = hoveredIndex === i;
@@ -365,7 +346,6 @@ export function HomeS3() {
                                 className="relative cursor-pointer"
                                 style={{ borderTop: i === 0 ? '1px solid #e5e7eb' : 'none' }}
                             >
-                                {/* Bottom border */}
                                 <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-gray-200 z-0" />
                                 <motion.div
                                     className="absolute bottom-0 left-0 h-[2px] bg-gray-900 z-10"
@@ -374,15 +354,12 @@ export function HomeS3() {
                                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                 />
 
-                                {/* Row */}
                                 <div className="relative z-20 flex items-center gap-3 sm:gap-6 lg:gap-10 px-3 sm:px-6 lg:px-10 py-5 sm:py-7 lg:py-9">
 
-                                    {/* Year */}
                                     <span className="text-sm sm:text-base text-gray-400 font-normal w-12 sm:w-16 lg:w-20 shrink-0 tabular-nums">
                     {award.year}
                   </span>
 
-                                    {/* Title */}
                                     <motion.h3
                                         animate={{ color: isHovered ? '#111827' : '#374151' }}
                                         transition={{ duration: 0.25 }}
@@ -394,7 +371,6 @@ export function HomeS3() {
                                         </span>
                                     </motion.h3>
 
-                                    {/* Floating badge */}
                                     <AnimatePresence>
                                         {isHovered && (
                                             <motion.div
@@ -413,7 +389,6 @@ export function HomeS3() {
                                         )}
                                     </AnimatePresence>
 
-                                    {/* Location — hidden on mobile */}
                                     <div className="hidden md:flex items-center gap-2 shrink-0">
                                         <LocationIcon />
                                         <span className="text-sm lg:text-base text-gray-500 whitespace-nowrap">
@@ -421,7 +396,6 @@ export function HomeS3() {
                     </span>
                                     </div>
 
-                                    {/* Arrow */}
                                     <motion.a
                                         href={`/downloads/${award.zipFile}`}
                                         animate={{ color: isHovered ? '#111827' : '#9ca3af' }}

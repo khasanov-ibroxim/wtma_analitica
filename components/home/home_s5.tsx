@@ -2,21 +2,17 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import ava from "@/assets/home/home_s7/IMG_1851.jpg"
+import Image from "next/image";
+
 const testimonials = [
     { id: 1, name: 'Шамсиддин Екубов', role: 'Tex Area Analytics',
         quote: '«В 2026 году конкурентное преимущество в текстильной отрасли формируется не на уровне фабрики, а на уровне всей цепочки создания стоимости. Выигрывают компании, которые превращают данные, прозрачность и операционную дисциплину в инструмент доверия для глобальных клиентов.»',
-        avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80' },
+        avatar: ava
+    },
 
 ];
 
-const logos = [
-    { name: '/OEVA',     font: '"Syne", sans-serif',         weight: 800, style: 'normal', spacing: '-0.03em', size: 26 },
-    { name: 'Beanca',    font: '"Playfair Display", serif',  weight: 500, style: 'normal', spacing: '0.01em',  size: 26 },
-    { name: 'Mosvolk',   font: '"Syne", sans-serif',         weight: 700, style: 'normal', spacing: '-0.02em', size: 24 },
-    { name: 'Recoletta', font: '"Playfair Display", serif',  weight: 700, style: 'italic', spacing: '-0.01em', size: 24 },
-    { name: 'vagoda',    font: '"DM Sans", sans-serif',      weight: 300, style: 'normal', spacing: '0.04em',  size: 26 },
-    { name: 'Mosvolk',   font: '"Syne", sans-serif',         weight: 700, style: 'normal', spacing: '-0.02em', size: 24 },
-];
 
 const BASE = 54;
 const ACTIVE = 86;
@@ -49,120 +45,8 @@ function ProgressArc({ size }: { size: number }) {
     );
 }
 
-// ── LOGO SWIPER ───────────────────────────────────────────────────────────────
-const GAP = 12;
 
-function LogoSwiper() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const trackRef = useRef<HTMLDivElement>(null);
-    const offsetRef = useRef(0);
-    const isDragging = useRef(false);
-    const startX = useRef(0);
-    const startOffset = useRef(0);
-    const cardWidthRef = useRef(0);
-    const singleSetWidth = useRef(0);
 
-    const items = [...logos, ...logos];
-
-    const measure = useCallback(() => {
-        if (!containerRef.current) return;
-        const total = containerRef.current.offsetWidth;
-        let perRow = 6;
-        if (total < 900) perRow = 4;
-        if (total < 560) perRow = 2.5;
-        const cw = (total - GAP * (Math.ceil(perRow) - 1)) / perRow;
-        cardWidthRef.current = cw;
-        singleSetWidth.current = logos.length * (cw + GAP);
-        if (trackRef.current) {
-            trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
-        }
-    }, []);
-
-    useEffect(() => {
-        measure();
-        window.addEventListener('resize', measure);
-        return () => window.removeEventListener('resize', measure);
-    }, [measure]);
-
-    const clamp = (v: number) => {
-        const sw = singleSetWidth.current;
-        if (sw === 0) return v;
-        let n = v % sw;
-        if (n > 0) n -= sw;
-        if (n < -sw) n += sw;
-        return n;
-    };
-
-    const applyTransform = () => {
-        if (trackRef.current)
-            trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
-    };
-
-    const onPointerDown = (e: React.PointerEvent) => {
-        isDragging.current = true;
-        startX.current = e.clientX;
-        startOffset.current = offsetRef.current;
-        (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-    };
-
-    const onPointerMove = (e: React.PointerEvent) => {
-        if (!isDragging.current) return;
-        offsetRef.current = clamp(startOffset.current + (e.clientX - startX.current));
-        applyTransform();
-    };
-
-    const onPointerUp = () => { isDragging.current = false; };
-
-    return (
-        <div
-            ref={containerRef}
-            className="w-full overflow-hidden cursor-grab active:cursor-grabbing select-none"
-            style={{ padding: `0 ${GAP}px`, boxSizing: 'border-box' }}
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-            onPointerLeave={onPointerUp}
-        >
-            <div
-                ref={trackRef}
-                className="flex"
-                style={{ gap: GAP, willChange: 'transform', userSelect: 'none' }}
-            >
-                {items.map((logo, i) => {
-                    return (
-                        <div
-                            key={i}
-                            className="bg-white flex items-center justify-center shrink-0"
-                            style={{
-                                width: cardWidthRef.current || 'auto',
-                                minWidth: 140,
-                                paddingTop: 28,
-                                paddingBottom: 28,
-                                paddingLeft: 16,
-                                paddingRight: 16,
-                            }}
-                        >
-                <span
-                    style={{
-                        fontFamily: logo.font,
-                        fontWeight: logo.weight,
-                        fontStyle: logo.style,
-                        letterSpacing: logo.spacing,
-                        fontSize: logo.size,
-                        color: '#111827',
-                        userSelect: 'none',
-                        whiteSpace: 'nowrap',
-                    }}
-                >
-                  {logo.name}
-                </span>
-                        </div>
-                    );
-                })}
-            </div>
-        </div>
-    );
-}
 
 // ── HOME S5 ───────────────────────────────────────────────────────────────────
 export default function HomeS5() {
@@ -170,7 +54,7 @@ export default function HomeS5() {
     const cur = testimonials[active];
 
     return (
-        <section className="w-full bg-[#eef0f8]  font-sans  relative py-24 pb-20 mt-20">
+        <section className="w-full bg-[#eef0f8]  font-sans  relative py-0 pb-0 mt-20">
 
             {/* 1. ROTATING BADGE */}
             <div className="flex justify-center pt-10 sm:pt-14  absolute  right-[45%] top-[-120px]   z-10">
@@ -199,7 +83,7 @@ export default function HomeS5() {
                             fontFamily="'DM Sans', sans-serif"
                         >
                             <textPath href="#circle-path" className={"text-center "}>
-                                Tex Area Analitics Tex Area Analitics
+                                Tex Area Analitics • Tex Area Analitics •
                             </textPath>
                         </text>
                     </motion.svg>
@@ -288,8 +172,8 @@ export default function HomeS5() {
                                 >
                                     {isActive && <ProgressArc size={size} />}
                                     <img
-                                        src={t.avatar}
-                                        alt={t.name}
+                                        src={t.avatar.src}
+                                        alt={"sadasd"}
                                         draggable={false}
                                         className="rounded-full object-cover grayscale select-none absolute"
                                         style={{
@@ -308,8 +192,7 @@ export default function HomeS5() {
                 </div>
             </div>
 
-            {/* 3. LOGO SWIPER */}
-            <LogoSwiper />
+
 
         </section>
     );

@@ -183,7 +183,7 @@
     }
 
     .hero-headline {
-        @apply text-[250px] font-extrabold leading-[0.92] whitespace-nowrap flex-shrink-0;
+        @apply text-[150px]  leading-[0.92] whitespace-nowrap flex-shrink-0;
         font-family: '--font-manrope', sans-serif;
         color: var(--text-dark);
         letter-spacing: -0.03em;
@@ -342,7 +342,7 @@
         @apply px-5;
     }
     .hero-headline {
-        font-size: clamp(52px, 14vw, 100px);
+
         white-space: nowrap;
     }
     .hero-stat {

@@ -31,7 +31,7 @@ export const analyticsPosts: AnalyticsPost[] = [
     {
         id: "analytc",
         title: "Аналитика рынков",
-        watermarkText: "WTMA ANALITIC",
+        watermarkText: "",
         image: i1,
         introTitle: "Глобальная аналитика текстильного рынка",
         introParagraphs: [
@@ -73,7 +73,7 @@ export const analyticsPosts: AnalyticsPost[] = [
     {
         id: "cotton",
         title: "ИНДЕКС ХЛОПКА",
-        watermarkText: "WTMA ANALITIC",
+        watermarkText: "",
         image: i1,
         introTitle: "Аналитика мирового рынка хлопка",
         introParagraphs: [
@@ -121,7 +121,7 @@ export const analyticsPosts: AnalyticsPost[] = [
     {
         id: "analytics_copy",
         title: "Архив котировок",
-        watermarkText: "WTMA ANALITIC",
+        watermarkText: "",
         image: i1,
         introTitle: "Историческая аналитика рынка",
         introParagraphs: [
@@ -168,7 +168,7 @@ export const analyticsPosts: AnalyticsPost[] = [
     {
         id: "expertize",
         title: "ЦЕНТР ЭКСПЕРТИЗЫ",
-        watermarkText: "WTMA ANALITIC",
+        watermarkText: "",
         image: i1,
         introTitle: "Отраслевые исследования и стратегическая аналитика",
         introParagraphs: [
@@ -212,7 +212,7 @@ export const analyticsPosts: AnalyticsPost[] = [
     {
         id: "dinamic",
         title: "ДИНАМИКА РЫНКА",
-        watermarkText: "WTMA ANALITIC",
+        watermarkText: "",
         image: i1,
         introTitle: "Мониторинг текстильного рынка в реальном времени",
         introParagraphs: [

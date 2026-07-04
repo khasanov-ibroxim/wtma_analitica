@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Poppins, Inter } from "next/font/google";
+import { Manrope, Poppins, Inter ,Montserrat} from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
@@ -20,6 +20,11 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-inter",
 });
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-montserrat",
+});
 
 export const metadata: Metadata = {
   title: "Texare Analitica - Business & Finance",
@@ -39,7 +44,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
       </head>
       <body
-        className={`${manrope.variable} ${poppins.variable} ${inter.variable} font-sans antialiased`}
+        className={`${manrope.variable} ${poppins.variable} ${inter.variable} ${montserrat.variable} font-sans antialiased`}
       >
         {children}
       </body>

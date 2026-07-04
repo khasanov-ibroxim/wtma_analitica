@@ -110,81 +110,13 @@ const HomeS6 = () => {
                                 priority
                             />
 
-                            {/* Play button — mobilda markazda, desktopda chapda */}
-                            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 lg:left-[100px] lg:translate-x-0 lg:bottom-[100px]">
-                                {[0, 0.8, 1.6].map((delay, i) => (
-                                    <motion.span
-                                        key={i}
-                                        className="absolute inset-0 rounded-full border border-white/60"
-                                        animate={{ scale: [1, 2.5], opacity: [0.8, 0] }}
-                                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut", delay }}
-                                    />
-                                ))}
-                                <button
-                                    onClick={() => setModalOpen(true)}
-                                    className="relative z-10 w-[80px] h-[80px] lg:w-[100px] lg:h-[100px] bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer border border-white/30 hover:bg-white/30 transition-colors duration-300"
-                                    aria-label="Play video"
-                                >
-                                    <Play size={32} className="text-white ml-1 lg:hidden" fill="white" />
-                                    <Play size={40} className="text-white ml-1 hidden lg:block" fill="white" />
-                                </button>
                             </div>
-                        </div>
 
                     </div>
                 </div>
             </div>
 
-            {/* VIDEO MODAL */}
-            <AnimatePresence>
-                {modalOpen && (
-                    <motion.div
-                        className="fixed inset-0 z-[9999] flex items-center justify-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <motion.div
-                            className="absolute inset-0 bg-black/85 cursor-pointer"
-                            onClick={() => setModalOpen(false)}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                        />
-                        <motion.div
-                            className="relative z-10 w-full max-w-[900px] mx-4"
-                            initial={{ scale: 0.88, opacity: 0, y: 24 }}
-                            animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.88, opacity: 0, y: 16 }}
-                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        >
-                            <button
-                                onClick={() => setModalOpen(false)}
-                                className="absolute -top-12 right-0 flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200 z-20"
-                                aria-label="Close video"
-                            >
-                                <span className="text-[13px] font-medium tracking-wide uppercase" style={{ fontFamily: '"DM Sans", sans-serif' }}>
-                                    Close
-                                </span>
-                                <div className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition-colors duration-200">
-                                    <X size={16} />
-                                </div>
-                            </button>
-                            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                                <iframe
-                                    className="absolute inset-0 w-full h-full"
-                                    src={`https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0&modestbranding=1`}
-                                    title="Video"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                    style={{ border: 'none' }}
-                                />
-                            </div>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+
         </>
     );
 };

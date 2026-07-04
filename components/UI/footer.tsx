@@ -2,9 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-
-const navLinks = ['Home', 'Portfolio', 'Service', 'Contact', 'Blog'];
-const essentialLinks = ['Privacy Policy', 'Terms and conditions', 'Cookie Policy', 'Careers'];
+import Image from "next/image";
+import logo from '@/assets/logo.svg'
 
 const FacebookIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -12,28 +11,32 @@ const FacebookIcon = () => (
     </svg>
 );
 
-const XIcon = () => (
+const LinkedInIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
     </svg>
 );
 
-const YoutubeIcon = () => (
+const InstagramIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
-        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.163 6.163 0 1 0 0 12.326 6.163 6.163 0 0 0 0-12.326zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
     </svg>
 );
 
-const BeIcon = () => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M8.228 9.525c.418 0 .75-.099 1-.298.248-.199.373-.516.373-.952 0-.408-.12-.701-.361-.882C9-.307 8.672-.208 8.228-.208H5.5v1.633h2.728zM8.531 12.947c.49 0 .868-.12 1.135-.358.268-.239.401-.597.401-1.073 0-.452-.14-.793-.422-1.024-.281-.23-.664-.345-1.147-.345H5.5v2.8h3.031z"/>
-        <path d="M22 0H2C.9 0 0 .9 0 2v20c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2zM14.04 7.354h4.299V8.51H14.04V7.354zM11.77 13.22c-.27.484-.651.857-1.143 1.12-.492.261-1.075.392-1.752.392H3.5V5.5h5.254c1.388 0 2.367.34 2.94 1.02.572.678.671 1.484.302 2.418.251.328.433.7.548 1.117.115.416.127.837.034 1.258-.14.595-.36 1.063-.611 1.547zm6.854-.365c-.088.505-.288.95-.598 1.337-.31.386-.703.679-1.179.879-.476.2-1.018.3-1.626.3-1.29 0-2.288-.38-2.994-1.14-.707-.76-1.06-1.8-1.06-3.12 0-1.28.36-2.316 1.08-3.11.72-.793 1.703-1.19 2.949-1.19 1.273 0 2.256.41 2.952 1.23.695.82 1.026 1.973.992 3.46H13.16c.044.59.22 1.047.53 1.37.309.324.727.485 1.254.485.37 0 .684-.09.94-.27.256-.18.43-.43.522-.748h2.218z"/>
-        <path d="M15.58 11.39h2.19c-.05-.52-.211-.913-.483-1.179-.272-.266-.62-.399-1.045-.399-.45 0-.81.14-1.077.42-.268.28-.424.666-.469 1.158h.884z"/>
-    </svg>
-);
+export default function Footer({ lang }: { lang: string }) {
+    const navLinks = [
+        { name: 'Главная',           href: `/${lang}` },
+        { name: 'О нас',             href: `/${lang}/about` },
+        { name: 'Блог',             href: `/${lang}/about` },
+        { name: 'Контакты',          href: `/${lang}/contact` },
+    ];
+    const essentialLinks = [  { name: 'Аналитика рынков',  href: `/${lang}/analytics` },
+        { name: 'Индекс хлопка',     href: `/${lang}/cotton-index` },
+        { name: 'Архив котировок',   href: `/${lang}/archive` },
+        { name: 'Центр экспертизы',  href: `/${lang}/expertise` },
+        { name: 'Динамика рынка',    href: `/${lang}/market-dynamics` },
+        ];
 
-export default function Footer() {
     return (
         <footer className="w-full font-sans" style={{ background: '#eef0f8' }}>
 
@@ -41,74 +44,36 @@ export default function Footer() {
             <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#d1d5db]">
 
                 {/* Col 1: Nav links */}
-                <div className="flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-10 sm:py-20 gap-4 sm:gap-5">
-                    {navLinks.map((item) => (
+                <div className="flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-10 sm:py-20 gap-4 sm:gap-2">
+                    {navLinks.map((item, index) => (
                         <Link
-                            key={item}
-                            href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
+                            key={index}
+                            href={item.href}
                             className="no-underline transition-colors duration-200"
                             style={{
                                 fontFamily: '"DM Sans", sans-serif',
-                                fontSize: 'clamp(18px, 2vw, 26px)',
+                                fontSize: 'clamp(14px, 1vw, 16px)',
                                 fontWeight: 400,
                                 color: '#374151',
-                                letterSpacing: '-0.01em',
+                                letterSpacing: '',
                             }}
                             onMouseEnter={(e) => (e.currentTarget.style.color = '#1B222C')}
                             onMouseLeave={(e) => (e.currentTarget.style.color = '#374151')}
                         >
-                            {item}
+                            {item.name}
                         </Link>
                     ))}
                 </div>
 
                 {/* Col 2: Logo + tagline + CTA */}
                 <div className="flex flex-col items-center justify-center px-8 py-10 sm:py-20 gap-6 text-center">
-                    <h2
-                        style={{
-                            fontFamily: '"Playfair Display", serif',
-                            fontSize: 'clamp(26px, 3vw, 38px)',
-                            fontWeight: 700,
-                            color: '#1B222C',
-                            letterSpacing: '-0.01em',
-                        }}
-                    >
-                        Adina.
-                    </h2>
-                    <p
-                        style={{
-                            fontFamily: '"DM Sans", sans-serif',
-                            fontSize: 'clamp(14px, 1.4vw, 20px)',
-                            fontWeight: 400,
-                            color: '#6b7280',
-                            lineHeight: 1.6,
-                            maxWidth: 280,
-                        }}
-                    >
-                        Make your business boom with our adina.
-                    </p>
-                    <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-2 no-underline px-6 py-3.5 transition-all duration-200 hover:opacity-85 hover:-translate-y-px"
-                        style={{
-                            background: '#1B222C',
-                            color: '#ffffff',
-                            fontFamily: '"DM Sans", sans-serif',
-                            fontSize: 14,
-                            fontWeight: 500,
-                            letterSpacing: '0.02em',
-                            borderRadius: 2,
-                        }}
-                    >
-                        Let's Chat
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M7 17L17 7M17 7H7M17 7v10"/>
-                        </svg>
-                    </Link>
+                   <Link href={`/${lang}`}>
+                       <Image src={logo} alt={"TEXAREA"}/>
+                   </Link>
+
                 </div>
 
-                {/* Col 3: Essential links — "Essntial" typo tuzatildi */}
+                {/* Col 3: Essential links */}
                 <div className="flex flex-col justify-center px-8 sm:px-12 lg:px-16 py-10 sm:py-20 gap-2">
                     <p
                         className="mb-4"
@@ -120,12 +85,12 @@ export default function Footer() {
                             letterSpacing: '-0.01em',
                         }}
                     >
-                        Essential
+
                     </p>
-                    {essentialLinks.map((item) => (
+                    {essentialLinks.map((item , index) => (
                         <Link
-                            key={item}
-                            href="#"
+                            key={index}
+                            href={item.href}
                             className="no-underline transition-colors duration-200 py-1"
                             style={{
                                 fontFamily: '"DM Sans", sans-serif',
@@ -136,7 +101,7 @@ export default function Footer() {
                             onMouseEnter={(e) => (e.currentTarget.style.color = '#1B222C')}
                             onMouseLeave={(e) => (e.currentTarget.style.color = '#6b7280')}
                         >
-                            {item}
+                            {item.name}
                         </Link>
                     ))}
                 </div>
@@ -150,10 +115,9 @@ export default function Footer() {
                     <div className="flex flex-col gap-4">
                         <div className="flex items-center gap-4">
                             {[
+                                { icon: <LinkedInIcon />, href: '#' },
                                 { icon: <FacebookIcon />, href: '#' },
-                                { icon: <XIcon />, href: '#' },
-                                { icon: <YoutubeIcon />, href: '#' },
-                                { icon: <BeIcon />, href: '#' },
+                                { icon: <InstagramIcon />, href: '#' },
                             ].map((s, i) => (
                                 <a
                                     key={i}
@@ -166,7 +130,7 @@ export default function Footer() {
                             ))}
                         </div>
                         <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: 13, color: '#6b7280' }}>
-                            © 2024{' '}
+                            © 2026{' '}
                             <strong style={{ color: '#1B222C', fontWeight: 600 }}>Example,</strong>{' '}
                             All rights reserved.
                         </p>
@@ -175,8 +139,7 @@ export default function Footer() {
                     {/* Right: office addresses */}
                     <div className="flex flex-col sm:flex-row gap-8 sm:gap-16">
                         {[
-                            { city: 'Canada', address: '71 South Los Carneros Road,', phone: '+51 174 705 812' },
-                            { city: 'Germany', address: '71 South Los Carneros Road,', phone: '+51 174 705 812' },
+                            { city: 'Ташкент', address: 'Улица Кукча Дарвоза, дом 314.', phone: '+998 93 809 99 98' },
                         ].map((office) => (
                             <div key={office.city} className="flex flex-col gap-1">
                                 <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: 15, fontWeight: 600, color: '#1B222C' }}>
@@ -186,7 +149,7 @@ export default function Footer() {
                                     {office.address}
                                 </p>
                                 <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: 13, color: '#6b7280' }}>
-                                    Phone: <span style={{ color: '#1B222C', fontWeight: 500 }}>{office.phone}</span>
+                                    Телефон: <span style={{ color: '#1B222C', fontWeight: 500 }}>{office.phone}</span>
                                 </p>
                             </div>
                         ))}

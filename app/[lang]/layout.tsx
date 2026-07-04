@@ -31,7 +31,7 @@ export default async function LangLayout({
         <>
             <Navbar lang={lang}/>
             {children}
-            <Footer/>
+            <Footer lang={lang}/>
         </>
     );
 }

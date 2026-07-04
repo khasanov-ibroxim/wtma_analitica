@@ -23,7 +23,9 @@
     --foreground: #ededed;
   }
 }
-
+.font-montserrat {
+    font-family: "Montserrat", sans-serif;
+}
 @layer base {
   body {
     background: #FAFAFA;
