@@ -163,7 +163,7 @@ export default function Analyitics1({post, lang, services, heroImage, heroAlt}: 
 
                     {/* Hero Image — props orqali beriladi, berilmasa post.image ishlatiladi */}
                     {resolvedHeroImage && (
-                        <div className="w-full aspect-[18/9] sm:aspect-[2/1] overflow-hidden ">
+                        <div className="w-full aspect-[18/9] sm:aspect-[2/1] overflow-hidden">
                             <Image
                                 src={resolvedHeroImage}
                                 alt={resolvedHeroAlt}
@@ -223,13 +223,13 @@ export default function Analyitics1({post, lang, services, heroImage, heroAlt}: 
                         </div>
                     )}
 
-                    {/* Downloads — har bir obyekt name orqali public/downloads dagi zip faylni yuklaydi */}
+                    {/* Downloads — post.downloads: { label, href }[]. href to'g'ridan-to'g'ri fayl manziliga ishora qiladi */}
                     {post.downloads.length > 0 && (
                         <div className="flex flex-col gap-3">
                             {post.downloads.map((d) => (
 <a
-                                key={d.name}
-                                href={`/downloads/${d.name}.zip`}
+                                key={d.href}
+                                href={d.href}
                                 download
                                 className="flex items-center justify-between bg-slate-100 hover:bg-slate-200 px-4 py-4 text-sm text-gray-800 font-medium transition-colors"
                                 >
