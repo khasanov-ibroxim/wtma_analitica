@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Pagehero from "@/components/UI/Pagehero";
 import Analyitics1 from "@/components/analytics/analyitics_1";
 import { getPostById } from "@/data/analyticsData";
-import bg from "@/assets/ui/breadcrumb.png";
+import bg from "@/assets/home/home_s2/archive.jpg";
 
 interface Props {
     params: Promise<{ lang: string }>;

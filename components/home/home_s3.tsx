@@ -48,7 +48,7 @@ const DownloadIcon = () => (
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
-const tabs = [{title:"all" , tag: "all"},{title:"США" , tag:"usa"}, {title:"Саудовская Аравия" , tag:"baa"}, {title:"Япония" , tag:"japan"}, {title:"Германия" , tag:"gr"}];
+const tabs = [{title:"Все" , tag: "all"},{title:"США" , tag:"usa"}, {title:"Саудовская Аравия" , tag:"baa"}, {title:"Япония" , tag:"japan"}, {title:"Германия" , tag:"gr"}];
 
 const caseStudies: Record<string, { id: number; tag: string; title: string; image: string }[]> = {
     usa: [

@@ -2,27 +2,33 @@
 import React, {useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 
+import blog_0_0 from "@/assets/home/home_blog_s1/blog_0_0.jpg"
+import blog_1_0 from "@/assets/home/home_blog_s1/blog_1_0.jpg"
+import blog_2_0 from "@/assets/home/home_blog_s1/blog_2_0.jpg"
+import Image from "next/image";
+const MotionImage = motion(Image);
+
 const services = [
     {
         id: '01',
-        label: 'HR Researches',
-        title: 'Unique & modern business tips for our clients.',
-        description: 'Elevate your experience with our premium services tailored to your needs.',
-        image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=700&q=80',
+        label: 'Конфликт ',
+        title: 'Конфликт «родственники vs менеджеры»',
+        description: 'Одна из самых болезненных тем в узбекском бизнесе — и особенно в текстиле.\n',
+        image: blog_0_0,
     },
     {
         id: '02',
-        label: 'Data Analysis',
-        title: 'Unique & modern business tips for our clients.',
-        description: 'Elevate your experience with our premium services tailored to your needs.',
-        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=80',
+        label: 'Выставки',
+        title: 'Выставки, которые не дали ни одного клиента — почему так происходит',
+        description: '«Выставка не дала ни одного клиента». Любимая фраза фабрик после −30 000$ бюджета.\n',
+        image: blog_1_0,
     },
     {
         id: '03',
-        label: 'Unique & modern',
-        title: 'Unique & modern business tips for our clients.',
-        description: 'Elevate your experience with our premium services tailored to your needs.',
-        image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=700&q=80',
+        label: 'Реальность',
+        title: 'Что фабрики не учитывают, открывая свой магазин',
+        description: 'Собственный магазин — это не только продажи, но и скрытые расходы.\n',
+        image: blog_2_0,
     },
 ];
 
@@ -59,7 +65,7 @@ export default function HomeS1() {
 
                                             {/* Image */}
                                             <div className="mx-0 overflow-hidden h-48 mt-4">
-                                                <img
+                                                <Image
                                                     src={s.image}
                                                     alt={s.title}
                                                     className="w-full h-full object-cover"
@@ -79,7 +85,7 @@ export default function HomeS1() {
                                                     <button
                                                         className="inline-flex items-center gap-2 bg-gray-900 text-white text-sm font-medium px-5 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200"
                                                     >
-                                                        блог информация
+                                                        Блог
                                                         <svg width="12" height="12" viewBox="0 0 13 13" fill="none">
                                                             <path d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5"
                                                                   stroke="currentColor" strokeWidth="1.8"
@@ -152,7 +158,7 @@ export default function HomeS1() {
                                                 exit={{opacity: 0, transition: {duration: 0.12}}}
                                             >
                                                 <div className="mx-0 overflow-hidden" style={{height: 220}}>
-                                                    <motion.img
+                                                    <MotionImage
                                                         src={s.image}
                                                         alt={s.title}
                                                         className="w-full h-full object-cover"
@@ -175,7 +181,7 @@ export default function HomeS1() {
                                                             onClick={(e) => e.stopPropagation()}
                                                             className="inline-flex items-center gap-2 bg-gray-900 text-white text-sm font-medium px-5 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200"
                                                         >
-                                                            блог информация
+                                                            Блог
                                                             <svg width="12" height="12" viewBox="0 0 13 13" fill="none">
                                                                 <path d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5"
                                                                       stroke="currentColor" strokeWidth="1.8"

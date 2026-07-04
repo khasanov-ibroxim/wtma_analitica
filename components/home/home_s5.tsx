@@ -198,8 +198,8 @@ export default function HomeS5() {
                             fill="#1B222C"
                             fontFamily="'DM Sans', sans-serif"
                         >
-                            <textPath href="#circle-path">
-                                HIRE US TODAY - HIRE US TODAY - asds
+                            <textPath href="#circle-path" className={"text-center "}>
+                                Tex Area Analitics Tex Area Analitics
                             </textPath>
                         </text>
                     </motion.svg>

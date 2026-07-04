@@ -1,5 +1,5 @@
 import React from 'react';
-import bg_img from "@/assets/home_header_bottom/h1-bg.jpg"
+import bg_img from "@/assets/home/home_header_bottom/h1-bg.jpg"
 import Image from "next/image";
 import { ArrowUpRight } from 'lucide-react';
 

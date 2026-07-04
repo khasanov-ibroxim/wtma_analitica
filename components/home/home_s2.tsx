@@ -3,6 +3,11 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from "next/link";
 import {Props} from "next/script";
+import analy from "@/assets/home/home_s2/analy.jpg"
+import archive from "@/assets/home/home_s2/archive.jpg"
+import dinamic from "@/assets/home/home_s2/dinamic.jpg"
+import indexMarket from "@/assets/home/home_s2/indexMarket.jpg"
+import tsent from "@/assets/home/home_s2/exspertize.jpg"
 
 const panels = [
     {
@@ -11,7 +16,7 @@ const panels = [
         tag: 'Аналитика рынков',
         title: 'Аналитика рынков',
         description: 'Ключевые тренды и показатели отрасли. ',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80',
+        image: analy,
     },
     {
         id: '02',
@@ -19,7 +24,7 @@ const panels = [
         tag: 'Индекс хлопка ',
         title: 'Индекс хлопка ',
         description: 'Ежедневный мониторинг цен на хлопок. ',
-        image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80',
+        image: indexMarket,
     },
     {
         id: '03',
@@ -27,7 +32,7 @@ const panels = [
         tag: 'Архив котировок ',
         title: 'Архив котировок ',
         description: 'Исторические данные и аналитика цен. ',
-        image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1600&q=80',
+        image: archive,
     },
     {
         id: '04',
@@ -35,7 +40,7 @@ const panels = [
         tag: 'Центр экспертизы ',
         title: 'Центр экспертизы ',
         description: 'Экспертные мнения и отраслевые оценки. ',
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80',
+        image: tsent,
     },
     {
         id: '05',
@@ -43,7 +48,7 @@ const panels = [
         tag: 'Динамика рынка ',
         title: 'Динамика рынка ',
         description: 'Изменения рынка в режиме реального времени.',
-        image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80',
+        image: dinamic,
     },
 ];
 
@@ -62,7 +67,7 @@ export default function HomeS2({lang}: {lang: string})  {
                 <motion.div
                     key={activeBg}
                     className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${activeBg})` }}
+                    style={{ backgroundImage: `url(${activeBg.src})` }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

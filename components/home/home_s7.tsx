@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import person_img from "@/assets/home_s7/imgi_36_h1-counter.jpg";
+import person_img from "@/assets/home/home_s7/IMG_1851.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -121,7 +121,7 @@ export default function HomeS7() {
                                 className="text-[28px] font-semibold text-[#1B222C]"
                                 style={{ fontFamily: '"Playfair Display", serif', letterSpacing: '-0.01em' }}
                             >
-                                E.
+                               SH.
                             </span>
                         </div>
                     </motion.div>
@@ -132,7 +132,7 @@ export default function HomeS7() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: '-40px' }}
                         transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-                        className="flex-1 flex flex-col justify-center px-0 lg:px-12 xl:px-16 py-6 lg:py-0 gap-8"
+                        className="flex-1 flex flex-col justify-center px-0 lg:px-12 xl:px-16 py-6 lg:py-0 gap-2"
                     >
                         <strong className={"text-2xl"}>«Будущее принадлежит тем, кто способен понимать рынок быстрее, чем он меняется.»</strong>
                         <p

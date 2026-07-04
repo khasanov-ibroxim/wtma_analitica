@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import right_img from "@/assets/home_s6/imgi_34_video-02-bg.jpg"
+import right_img from "@/assets/home/home_s6/home_s6_bg.jpg"
 import Image from "next/image";
 import { Play, X } from "lucide-react";
 import Link from "next/link";
