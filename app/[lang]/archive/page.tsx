@@ -23,8 +23,8 @@ export default async function QuotesArchivePage({ params }: Props) {
             flag: usa,
             description: "Архив котировок хлопка по рынку США. Исторические данные с 2010 года.",
             files: [
-                { year: "2025", href: "/downloads/usa/USA_2025.xlsx" },
-                { year: "2024", href: "/downloads/usa/USA_2024.xlsx" },
+                { year: "2025", href: "/downloads/usa/USA_2025.zip" },
+                { year: "2024", href: "/downloads/usa/USA_2024.zip" },
             ],
         },
         {
@@ -33,8 +33,8 @@ export default async function QuotesArchivePage({ params }: Props) {
             flag: brazil,
             description: "Архив котировок хлопка по рынку Бразилии. Исторические данные с 2010 года.",
             files: [
-                { year: "2025", href: "/downloads/br/Brazil_2025.xlsx" },
-                { year: "2024", href: "/downloads/br/Brazil_2024.xlsx" },
+                { year: "2025", href: "/downloads/br/Brazil_2025.rar" },
+                { year: "2024", href: "/downloads/br/Brazil_2024.rar" },
             ],
         },
         {
@@ -43,8 +43,8 @@ export default async function QuotesArchivePage({ params }: Props) {
             flag: chn,
             description: "Архив котировок хлопка по рынку Китая. Исторические данные с 2010 года.",
             files: [
-                { year: "2025", href: "/downloads/cn/China_2025.xlsx" },
-                { year: "2024", href: "/downloads/cn/China_2024.xlsx" },
+                { year: "2025", href: "/downloads/china/CHINA_2025.zip" },
+                { year: "2024", href: "/downloads/china/CHINA_2024.zip" },
             ],
         },
     ];
