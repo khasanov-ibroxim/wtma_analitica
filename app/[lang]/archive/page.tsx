@@ -1,49 +1,70 @@
-// app/[lang]/archive/page.tsx
-import { notFound } from "next/navigation";
-import Pagehero from "@/components/UI/Pagehero";
-import Analyitics1 from "@/components/analytics/analyitics_1";
-import { getPostById } from "@/data/analyticsData";
-import bgHero from "@/assets/archive/archive.jpg";
-import bg from "@/assets/home/home_s2/archive.jpg";
+
+
+import QuotesArchiveContent, {
+    ArchiveCountry,
+} from "@/components/UI/QuotesArchiveContent";
+import PageHeader from "@/components/UI/PageHeader";
+import chn from "@/assets/countriy/china.png"
+import usa from "@/assets/countriy/usa.png"
+import brazil from "@/assets/countriy/brazil.png"
 
 interface Props {
     params: Promise<{ lang: string }>;
 }
 
-export default async function ArchivePage({ params }: Props) {
+export default async function QuotesArchivePage({ params }: Props) {
     const { lang } = await params;
 
-    const post = getPostById("analytics_copy");
-    if (!post) notFound();
-    const archiveSer = [
-        { name: "США ", children:[
-
-                {name:"США_2025" , href:"/downloads/usa/USA_2025.zip"},
-                {name:"США_2024" , href:"/downloads/usa/USA_2024.zip"}
-            ]},
-        { name: "Китай", children:[
-                {name:"Китай_2025" , href:"/downloads/usa/CHINA_2025.zip"},
-                {name:"Китай_2024" , href:"/downloads/usa/CHINA_2024.zip"}
-            ]},
-        { name: "Бразилия ", children:[
-
-                {name:"Бразилия_2025" , href:"/downloads/br/Brazil_2025.rar"},
-                {name:"Бразилия_2024" , href:"/downloads/br/Brazil_2024.rar"},
-            ]},
+    // Mamlakatlar va ularning excel arxiv fayllari.
+    const countries: ArchiveCountry[] = [
+        {
+            id: "usa",
+            name: "США",
+            flag: usa,
+            description: "Архив котировок хлопка по рынку США. Исторические данные с 2010 года.",
+            files: [
+                { year: "2025", href: "/downloads/usa/USA_2025.xlsx" },
+                { year: "2024", href: "/downloads/usa/USA_2024.xlsx" },
+            ],
+        },
+        {
+            id: "brazil",
+            name: "Бразилия",
+            flag: brazil,
+            description: "Архив котировок хлопка по рынку Бразилии. Исторические данные с 2010 года.",
+            files: [
+                { year: "2025", href: "/downloads/br/Brazil_2025.xlsx" },
+                { year: "2024", href: "/downloads/br/Brazil_2024.xlsx" },
+            ],
+        },
+        {
+            id: "china",
+            name: "Китай",
+            flag: chn,
+            description: "Архив котировок хлопка по рынку Китая. Исторические данные с 2010 года.",
+            files: [
+                { year: "2025", href: "/downloads/cn/China_2025.xlsx" },
+                { year: "2024", href: "/downloads/cn/China_2024.xlsx" },
+            ],
+        },
     ];
+
     return (
         <div>
-            <Pagehero
-                title={post.title}
-                watermarkText={post.watermarkText}
-                backgroundImage={bgHero}
-                breadcrumbs={[
-                    { label: "Home", href: "/" },
-                    { label: "Аналитика рынков", href: `/${lang}/analytics` },
-                    { label: post.title },
-                ]}
+            <PageHeader
+                lang={lang}
+                breadcrumbLabel="Архив котировок"
+                title="Архив котировок"
+                description="Аналитика, мнения и практический опыт экспертов текстильной отрасли со всего мира."
             />
-            <Analyitics1 post={post} lang={lang} services={archiveSer} heroImage={bg}/>
+
+
+            <QuotesArchiveContent
+                countries={countries}
+                infoDescription="Каждый архив содержит Excel-файлы с ежедневными котировками хлопка, включая цены открытия, закрытия, максимальные и минимальные значения."
+                helpDescription="Наши эксперты готовы помочь вам с доступом к данным и ответить на ваши вопросы."
+                helpCtaHref={`/${lang}/contacts`}
+            />
         </div>
     );
 }

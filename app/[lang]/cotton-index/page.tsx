@@ -1,43 +1,58 @@
-// app/[lang]/cotton-index/page.tsx
-import { notFound } from "next/navigation";
-import Pagehero from "@/components/UI/Pagehero";
-import Analyitics1 from "@/components/analytics/analyitics_1";
-import { getPostById } from "@/data/analyticsData";
-import bgHero from "@/assets/cottonIndex/cotton.jpg";
-import bg from "@/assets/home/home_s2/indexMarket.jpg";
+
+
+import QuotesArchiveContent, {
+    ArchiveCountry,
+} from "@/components/UI/QuotesArchiveContent";
+import PageHeader from "@/components/UI/PageHeader";
+import chn from "@/assets/countriy/china.png"
+import usa from "@/assets/countriy/usa.png"
+import brazil from "@/assets/countriy/brazil.png"
 
 interface Props {
     params: Promise<{ lang: string }>;
 }
 
-export default async function CottonIndexPage({ params }: Props) {
+export default async function QuotesArchivePage({ params }: Props) {
     const { lang } = await params;
 
-    const post = getPostById("cotton");
-    if (!post) notFound();
-    const indexSer = [
-        { name: "США ", children:[
-                {name:"США_2026" , href:"/downloads/usa/USA_2026.zip"},
-            ]},
-        { name: "Бразилия ", children:[
-                {name:"Бразилия_2026" , href:"/downloads/br/Brazil_2026.zip"},
-
-            ]},
+    // Mamlakatlar va ularning excel arxiv fayllari.
+    const countries: ArchiveCountry[] = [
+        {
+            id: "usa",
+            name: "США",
+            flag: usa,
+            description: "Архив котировок хлопка по рынку США. Исторические данные с 2010 года.",
+            files: [
+                { year: "2026", href: "/downloads/usa/USA_2026.zip" }
+            ],
+        },
+        {
+            id: "brazil",
+            name: "Бразилия",
+            flag: brazil,
+            description: "Архив котировок хлопка по рынку Бразилии. Исторические данные с 2010 года.",
+            files: [
+                { year: "2026", href: "/downloads/br/Brazil_2026.zip" }
+            ],
+        },
     ];
 
     return (
         <div>
-            <Pagehero
-                title={post.title}
-                watermarkText={post.watermarkText}
-                backgroundImage={bgHero}
-                breadcrumbs={[
-                    { label: "Home", href: "/" },
-                    { label: "Аналитика рынков", href: `/${lang}/analytics` },
-                    { label: post.title },
-                ]}
+            <PageHeader
+                lang={lang}
+                breadcrumbLabel="Индекс хлопка"
+                title="Индекс хлопка"
+                description="Аналитика, мнения и практический опыт экспертов текстильной отрасли со всего мира."
             />
-            <Analyitics1 post={post} lang={lang} services={indexSer} heroImage={bg}/>
+
+
+            <QuotesArchiveContent
+                countries={countries}
+                infoDescription="Каждый архив содержит Excel-файлы с ежедневными котировками хлопка, включая цены открытия, закрытия, максимальные и минимальные значения."
+                helpDescription="Наши эксперты готовы помочь вам с доступом к данным и ответить на ваши вопросы."
+                helpCtaHref={`/${lang}/contacts`}
+            />
         </div>
     );
 }
