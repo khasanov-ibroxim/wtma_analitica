@@ -1,36 +1,20 @@
 "use client"
 import React, {useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
-
-import blog_0_0 from "@/assets/home/home_blog_s1/blog_0_0.jpg"
-import blog_1_0 from "@/assets/home/home_blog_s1/blog_1_0.jpg"
-import blog_2_0 from "@/assets/home/home_blog_s1/blog_2_0.jpg"
 import Image from "next/image";
+import {expertPosts, getCategoryById} from "@/data/data_exp";
+
 const MotionImage = motion(Image);
 
-const services = [
-    {
-        id: '01',
-        label: 'Конфликт ',
-        title: 'Конфликт «родственники vs менеджеры»',
-        description: 'Одна из самых болезненных тем в узбекском бизнесе — и особенно в текстиле.\n',
-        image: blog_0_0,
-    },
-    {
-        id: '02',
-        label: 'Выставки',
-        title: 'Выставки, которые не дали ни одного клиента — почему так происходит',
-        description: '«Выставка не дала ни одного клиента». Любимая фраза фабрик после −30 000$ бюджета.\n',
-        image: blog_1_0,
-    },
-    {
-        id: '03',
-        label: 'Реальность',
-        title: 'Что фабрики не учитывают, открывая свой магазин',
-        description: 'Собственный магазин — это не только продажи, но и скрытые расходы.\n',
-        image: blog_2_0,
-    },
-];
+// data_exp.ts dagi expertPosts massivining oxirgi 3 ta elementini olib,
+// home_s1 kartochkalari uchun kerakli shaklga (id/label/title/description/image) map qilamiz
+const services = expertPosts.slice(-3).map((post, i) => ({
+    id: String(i + 1).padStart(2, "0"),
+    label: getCategoryById(post.category)?.label ?? post.category,
+    title: post.title,
+    description: post.excerpt,
+    image: post.coverImage,
+}));
 
 export default function HomeS1() {
     const [active, setActive] = useState(0);

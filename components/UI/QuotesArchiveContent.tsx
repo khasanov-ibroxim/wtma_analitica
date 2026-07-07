@@ -189,8 +189,8 @@ export default function QuotesArchiveContent({
                                              }: QuotesArchiveContentProps) {
     const resolvedInfoStats: ArchiveInfoStat[] =
         infoStats ?? [
-            { icon: <CalendarIcon />, label: "исторических данных", value: "10+ лет" },
-            { icon: <RefreshIcon />, label: "обновление", value: "Ежедневное" },
+            { icon: <CalendarIcon />, label: "исторических данных", value: "3+ лет" },
+            { icon: <RefreshIcon />, label: "обновление", value: "Ежегодное" },
             { icon: <FileIcon />, label: "Excel (.xlsx)", value: "Удобный формат" },
         ];
 

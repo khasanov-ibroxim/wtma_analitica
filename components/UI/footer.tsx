@@ -34,7 +34,6 @@ export default function Footer({ lang }: { lang: string }) {
         { name: 'Индекс хлопка',     href: `/${lang}/cotton-index` },
         { name: 'Архив котировок',   href: `/${lang}/archive` },
         { name: 'Центр экспертизы',  href: `/${lang}/expertise` },
-        { name: 'Динамика рынка',    href: `/${lang}/market-dynamics` },
         ];
 
     return (

@@ -15,6 +15,7 @@ export interface AnalyticsPage {
 
 export interface AnalyticsItem {
     id: string;
+    country:string;
     title: string;
     breadcrumb: string;
     period: string;
@@ -28,6 +29,7 @@ export interface AnalyticsItem {
 export const analyticsItems: AnalyticsItem[] = [
     {
         id: "usa-market-analysis",
+        country:"Северная Америка",
         title: "Анализ рынка США",
         breadcrumb: "Анализ рынка",
         period: "2026",
@@ -41,6 +43,7 @@ export const analyticsItems: AnalyticsItem[] = [
     },
     {
         id: "baa-market-analysis",
+        country:"Азия",
         title: "Анализ рынка Саудовская Аравия",
         breadcrumb: "Анализ рынка",
         period: "2026",
@@ -53,6 +56,7 @@ export const analyticsItems: AnalyticsItem[] = [
     },
     {
         id: "japan-market-analysis",
+        country:"Азия",
         title: "Анализ рынка Япония",
         breadcrumb: "Анализ рынка",
         period: "2026",
@@ -65,6 +69,7 @@ export const analyticsItems: AnalyticsItem[] = [
     },
     {
         id: "gr-market-analysis",
+        country:"Европа",
         title: "Анализ рынка Германия",
         breadcrumb: "Анализ рынка",
         period: "2026",
@@ -77,6 +82,7 @@ export const analyticsItems: AnalyticsItem[] = [
     },
     {
         id: "mr-market-analysis",
+        country:"Африка",
         title: "Анализ рынка Марокко",
         breadcrumb: "Анализ рынка",
         period: "2026",

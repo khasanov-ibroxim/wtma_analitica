@@ -42,14 +42,7 @@ const panels = [
         description: 'Экспертные мнения и отраслевые оценки. ',
         image: tsent,
     },
-    {
-        id: '05',
-        link:"/market-dynamics",
-        tag: 'Динамика рынка ',
-        title: 'Динамика рынка ',
-        description: 'Изменения рынка в режиме реального времени.',
-        image: dinamic,
-    },
+
 ];
 
 export default function HomeS2({lang}: {lang: string})  {

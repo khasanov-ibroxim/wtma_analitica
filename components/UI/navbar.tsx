@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,8 +17,13 @@ const Navbar = ({ lang }: Props) => {
     const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0 });
     const [mounted, setMounted] = useState(false);
 
+    // Yangi: hover qilingan country va uning submenu pozitsiyasi
+    const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
+    const [submenuPos, setSubmenuPos] = useState({ top: 0, left: 0 });
+
     const analyticsTriggerRef = useRef<HTMLLIElement>(null);
     const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const submenuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const pathname = usePathname();
 
@@ -29,9 +34,22 @@ const Navbar = ({ lang }: Props) => {
         { name: 'Индекс хлопка',    href: `/${lang}/cotton-index` },
         { name: 'Архив котировок',  href: `/${lang}/archive` },
         { name: 'Центр экспертизы', href: `/${lang}/expertise` },
-        { name: 'Динамика рынка',   href: `/${lang}/market-dynamics` },
+
         { name: 'Контакты',         href: `/${lang}/contact` },
     ];
+
+    // Har bir country uchun unikal ro'yxat (tartibni saqlagan holda)
+    const uniqueCountries = useMemo(() => {
+        const seen = new Set<string>();
+        const result: string[] = [];
+        analyticsItems.forEach((item) => {
+            if (!seen.has(item.country)) {
+                seen.add(item.country);
+                result.push(item.country);
+            }
+        });
+        return result;
+    }, []);
 
     // Home page da emasmi
     const isHomePage = pathname === '/';
@@ -57,6 +75,13 @@ const Navbar = ({ lang }: Props) => {
         }
     };
 
+    const clearSubmenuCloseTimer = () => {
+        if (submenuCloseTimer.current) {
+            clearTimeout(submenuCloseTimer.current);
+            submenuCloseTimer.current = null;
+        }
+    };
+
     const openDropdown = () => {
         clearCloseTimer();
         const rect = analyticsTriggerRef.current?.getBoundingClientRect();
@@ -71,13 +96,34 @@ const Navbar = ({ lang }: Props) => {
 
     const scheduleCloseDropdown = () => {
         clearCloseTimer();
-        closeTimer.current = setTimeout(() => setIsDropdownOpen(false), 150);
+        closeTimer.current = setTimeout(() => {
+            setIsDropdownOpen(false);
+            setHoveredCountry(null);
+        }, 150);
+    };
+
+    const openSubmenu = (country: string, e: React.MouseEvent<HTMLLIElement>) => {
+        clearSubmenuCloseTimer();
+        const rect = e.currentTarget.getBoundingClientRect();
+        setSubmenuPos({
+            top: rect.top,
+            left: rect.right + 6,
+        });
+        setHoveredCountry(country);
+    };
+
+    const scheduleCloseSubmenu = () => {
+        clearSubmenuCloseTimer();
+        submenuCloseTimer.current = setTimeout(() => setHoveredCountry(null), 150);
     };
 
     // Scroll/resize bo'lganda dropdown pozitsiyasini yopib qo'yamiz (qayta hover qilinganda to'g'ri joyda chiqadi)
     useEffect(() => {
         if (!isDropdownOpen) return;
-        const close = () => setIsDropdownOpen(false);
+        const close = () => {
+            setIsDropdownOpen(false);
+            setHoveredCountry(null);
+        };
         window.addEventListener('scroll', close, { passive: true });
         window.addEventListener('resize', close);
         return () => {
@@ -92,6 +138,10 @@ const Navbar = ({ lang }: Props) => {
     const isSolid = !isHomePage || scrolled;
     const showTopBar = isHomePage && !scrolled;
 
+    const currentSubmenuItems = hoveredCountry
+        ? analyticsItems.filter((item) => item.country === hoveredCountry)
+        : [];
+
     const dropdownMenu = isDropdownOpen && (
         <ul
             onMouseEnter={clearCloseTimer}
@@ -101,7 +151,7 @@ const Navbar = ({ lang }: Props) => {
                 top: dropdownPos.top,
                 left: dropdownPos.left,
                 transform: 'translateX(-50%)',
-                minWidth: 280,
+                minWidth: 220,
                 background: '#ffffff',
                 borderRadius: 10,
                 boxShadow: '0 12px 30px rgba(0,0,0,0.18)',
@@ -111,11 +161,60 @@ const Navbar = ({ lang }: Props) => {
                 zIndex: 9999,
             }}
         >
-            {analyticsItems.map((item) => (
+            {uniqueCountries.map((country) => (
+                <li
+                    key={country}
+                    onMouseEnter={(e) => openSubmenu(country, e)}
+                    onMouseLeave={scheduleCloseSubmenu}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        gap: 8,
+                        padding: '10px 18px',
+                        color: '#1a1a1a',
+                        fontSize: 14,
+                        whiteSpace: 'nowrap',
+                        cursor: 'pointer',
+                        background: hoveredCountry === country ? '#f5f2fb' : 'transparent',
+                        transition: 'background 0.15s ease',
+                    }}
+                >
+                    <span>{country}</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                </li>
+            ))}
+        </ul>
+    );
+
+    const submenu = hoveredCountry && currentSubmenuItems.length > 0 && (
+        <ul
+            onMouseEnter={() => { clearCloseTimer(); clearSubmenuCloseTimer(); }}
+            onMouseLeave={() => { scheduleCloseSubmenu(); scheduleCloseDropdown(); }}
+            style={{
+                position: 'fixed',
+                top: submenuPos.top,
+                left: submenuPos.left,
+                minWidth: 280,
+                background: '#ffffff',
+                borderRadius: 10,
+                boxShadow: '0 12px 30px rgba(0,0,0,0.18)',
+                padding: '8px 0',
+                listStyle: 'none',
+                margin: 0,
+                zIndex: 10000,
+            }}
+        >
+            {currentSubmenuItems.map((item) => (
                 <li key={item.id}>
                     <Link
                         href={`/${lang}/analytics/${item.id}`}
-                        onClick={() => setIsDropdownOpen(false)}
+                        onClick={() => {
+                            setIsDropdownOpen(false);
+                            setHoveredCountry(null);
+                        }}
                         style={{
                             display: 'block',
                             padding: '10px 18px',
@@ -195,7 +294,7 @@ const Navbar = ({ lang }: Props) => {
             >
                 {!isSolid && <div className="diagonal-bg" />}
                 <div className="navbar-inner">
-<Image src={logo} alt={"asd"} height={100} width={150}/>
+                    <Image src={logo} alt={"asd"} height={100} width={150}/>
                     <ul className="nav-links">
                         {navLinks.map(({ name, href, key }) => (
                             <li
@@ -243,16 +342,25 @@ const Navbar = ({ lang }: Props) => {
                                 </Link>
                                 {key === 'analytics' && (
                                     <div style={{ paddingLeft: 16 }}>
-                                        {analyticsItems.map((item) => (
-                                            <Link
-                                                key={item.id}
-                                                href={`/${lang}/analytics/${item.id}`}
-                                                className="mobile-nav-link"
-                                                style={{ fontSize: 13, opacity: 0.8 }}
-                                                onClick={() => setIsMenuOpen(false)}
-                                            >
-                                                {item.title}
-                                            </Link>
+                                        {uniqueCountries.map((country) => (
+                                            <div key={country}>
+                                                <div style={{ fontSize: 13, fontWeight: 600, opacity: 0.6, padding: '6px 0' }}>
+                                                    {country}
+                                                </div>
+                                                {analyticsItems
+                                                    .filter((item) => item.country === country)
+                                                    .map((item) => (
+                                                        <Link
+                                                            key={item.id}
+                                                            href={`/${lang}/analytics/${item.id}`}
+                                                            className="mobile-nav-link"
+                                                            style={{ fontSize: 13, opacity: 0.8, paddingLeft: 12 }}
+                                                            onClick={() => setIsMenuOpen(false)}
+                                                        >
+                                                            {item.title}
+                                                        </Link>
+                                                    ))}
+                                            </div>
                                         ))}
                                     </div>
                                 )}
@@ -262,10 +370,11 @@ const Navbar = ({ lang }: Props) => {
                 )}
             </header>
 
-            {/* Dropdown document.body ga portal qilinadi — shu tufayli navbar/header ichidagi
+            {/* Dropdown va submenu document.body ga portal qilinadi — shu tufayli navbar/header ichidagi
                 overflow:hidden yoki stacking-context (masalan diagonal-bg effekti) uni kesib
                 tashlay olmaydi. */}
             {mounted && dropdownMenu && createPortal(dropdownMenu, document.body)}
+            {mounted && submenu && createPortal(submenu, document.body)}
         </div>
     );
 };

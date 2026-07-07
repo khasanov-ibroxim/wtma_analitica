@@ -13,11 +13,11 @@ const HomeHeader = () => {
                     alt="Ripe cotton seed pods on branch against wooden backdrop"
                     fill
                     priority
-                    className="object-cover object-top -z-20 blur-xs scale-105"
+                    className="object-cover object-top -z-20  scale-105"
                 />
 
                 {/* Fonni qoraytirish uchun to'qroq overlay (matn oq bo'lgani uchun) */}
-                <div className="absolute inset-0 -z-10 bg-black/30" />
+                <div className="absolute inset-0 -z-10 bg-black/50" />
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-center mt-50 text-center px-5 sm:px-10">

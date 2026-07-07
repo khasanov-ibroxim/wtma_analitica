@@ -59,9 +59,9 @@ const tabs = [{title:"Все" , tag: "all"},{title:"США" , tag:"usa"}, {title
 
 
 const awards = [
-    { year: '2026', title: 'США', subtitle: 'Ежемесячная динамика цен', location: 'США', zipFile: 'usa/USA_2026.zip' },
-    { year: '2026', title: 'Китай', subtitle: 'Ежемесячная динамика цен', location: 'Китай', zipFile: 'china_dayli_dinamiks.zip' },
-    { year: '2026', title: 'Бразилия', subtitle: 'Ежемесячная динамика цен', location: 'Бразилия', zipFile: 'br/Brazil_2026.zip' },
+    { year: '2026', title: 'США', subtitle: 'Ежемесячная динамика цен', location: 'США', zipFile: '/downloads/usa/USA_2026.zip' },
+    { year: '2026', title: 'Китай', subtitle: 'Ежемесячная динамика цен', location: 'Китай', zipFile: '/downloads/china/CHINA_2026.zip' },
+    { year: '2026', title: 'Бразилия', subtitle: 'Ежемесячная динамика цен', location: 'Бразилия', zipFile: '/downloads/br/Brazil_2026.zip' },
 ];
 
 // ─── IMAGE NATURAL ASPECT RATIO: rasm o'lchami 2360x1400 (McKinsey-uslubidagi taqdimot muqovalari) ──
@@ -300,7 +300,7 @@ export function HomeS3() {
 
     const handleDownload = (zipFile: string) => {
         const link = document.createElement('a');
-        link.href = `downloads/${zipFile}`;
+        link.href = `${zipFile}`;
         link.download = zipFile;
         document.body.appendChild(link);
         link.click();
