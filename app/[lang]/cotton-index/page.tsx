@@ -27,7 +27,7 @@ export default async function QuotesArchivePage({ params }: Props) {
     const { lang } = await params;
 
     const infoStat = [
-        { icon: <CalendarIcon />, label: "исторических данных", value: "2026" },
+        { icon: <CalendarIcon />, label: "", value: "2026" },
         { icon: <RefreshIcon />, label: "обновление", value: "Ежемесячное" },
         { icon: <FileIcon />, label: "Excel (.xlsx)", value: "Удобный формат" },
     ];
