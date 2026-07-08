@@ -133,7 +133,7 @@ export default function ExpertiseExplorer({
                 {/* Kartochkalar grid */}
                 <div>
                     {filteredPosts.length > 0 ? (
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3">
+                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2">
                             {filteredPosts.map((post) => (
                                 <ExpertPostCard key={post.id} post={post} lang={lang} />
                             ))}
