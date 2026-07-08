@@ -17,7 +17,7 @@ export default async function Page({ params }: Props) {
         <>
             <Home_header/>
             <HeaderBottom />
-            <HomeS1/>
+            <HomeS1 lang={lang} />
             <HomeS2 lang={lang}/>
             <HomeS3 lang={lang}/>
             <HomeS5/>

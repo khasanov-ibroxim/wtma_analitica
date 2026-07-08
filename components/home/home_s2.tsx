@@ -12,7 +12,7 @@ import tsent from "@/assets/home/home_s2/exspertize.jpg"
 const panels = [
     {
         id: '01',
-        link:"/analytics",
+        link:"/analytics/usa-market-analysis/",
         tag: 'Аналитика рынков',
         title: 'Аналитика рынков',
         description: 'Ключевые тренды и показатели отрасли. ',

@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import Image from "next/image";
 import {expertPosts, getCategoryById} from "@/data/data_exp";
+import Link from "next/link";
 
 const MotionImage = motion(Image);
 
@@ -10,13 +11,15 @@ const MotionImage = motion(Image);
 // home_s1 kartochkalari uchun kerakli shaklga (id/label/title/description/image) map qilamiz
 const services = expertPosts.slice(-3).map((post, i) => ({
     id: String(i + 1).padStart(2, "0"),
+    link:post.id,
     label: getCategoryById(post.category)?.label ?? post.category,
     title: post.title,
     description: post.excerpt,
     image: post.coverImage,
 }));
 
-export default function HomeS1() {
+console.log(services)
+export default function HomeS1({lang}: {lang: string}) {
     const [active, setActive] = useState(0);
 
     return (
@@ -161,7 +164,7 @@ export default function HomeS1() {
                                                     </p>
 
                                                     <div className="flex items-end justify-between mt-auto pt-3">
-                                                        <button
+                                                        <Link href={`/${lang}/expertise/${s.link}`}
                                                             onClick={(e) => e.stopPropagation()}
                                                             className="inline-flex items-center gap-2 bg-gray-900 text-white text-sm font-medium px-5 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200"
                                                         >
@@ -171,7 +174,7 @@ export default function HomeS1() {
                                                                       stroke="currentColor" strokeWidth="1.8"
                                                                       strokeLinecap="round" strokeLinejoin="round"/>
                                                             </svg>
-                                                        </button>
+                                                        </Link>
                                                         <span
                                                             className="select-none pointer-events-none font-bold text-white/50"
                                                             style={{fontSize: 72, lineHeight: 1}}

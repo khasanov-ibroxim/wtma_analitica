@@ -135,19 +135,19 @@ export function HomeS4({lang}: { lang: string }) {
     const itemsCountRef = useRef(0);
     const caseStudies: Record<string, { id: number; tag: string; title: string; image: StaticImageData ; link:string }[]> = {
         usa: [
-            { id: 1, tag: 'usa', title: 'Market data deep-dive for a leading investment firm', image: usa_img , link:`${lang}/analytics/usa-market-analysis`},
+            { id: 1, tag: 'usa', title: 'Market data deep-dive for a leading investment firm', image: usa_img , link:`/${lang}/analytics/usa-market-analysis`},
         ],
         baa: [
-            { id: 1, tag: 'baa', title: 'Strategic growth plan for mid-market retailer', image: baa_img , link:`${lang}/analytics/baa-market-analysis`},
+            { id: 1, tag: 'baa', title: 'Strategic growth plan for mid-market retailer', image: baa_img , link:`/${lang}/analytics/baa-market-analysis`},
         ],
         japan: [
-            { id: 1, tag: 'japan', title: 'Transformation roadmap for global bank', image: japan_img, link:`${lang}/analytics/japan-market-analysis`}
+            { id: 1, tag: 'japan', title: 'Transformation roadmap for global bank', image: japan_img, link:`/${lang}/analytics/japan-market-analysis`}
         ],
         gr: [
-            { id: 1, tag: 'gr', title: 'Transformation roadmap for global bank', image: gr_img, link:`${lang}/analytics/gr-market-analysis` },
+            { id: 1, tag: 'gr', title: 'Transformation roadmap for global bank', image: gr_img, link:`/${lang}/analytics/gr-market-analysis` },
         ],
         mr: [
-            { id: 1, tag: 'mr', title: 'Transformation roadmap for global bank', image: marokka_img, link:`${lang}/analytics/mr-market-analysis` },
+            { id: 1, tag: 'mr', title: 'Transformation roadmap for global bank', image: marokka_img, link:`/${lang}/analytics/mr-market-analysis` },
         ]
     };
 
