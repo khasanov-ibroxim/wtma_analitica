@@ -37,7 +37,7 @@ export default async function QuotesArchivePage({ params }: Props) {
             id: "usa",
             name: "США",
             flag: usa,
-            description: "Архив котировок хлопка по рынку США. Исторические данные с 2010 года.",
+            description: "Архив котировок хлопка по рынку США. ",
             files: [
                 { year: "2026", href: "/downloads/usa/USA_2026.zip" }
             ],
@@ -46,7 +46,7 @@ export default async function QuotesArchivePage({ params }: Props) {
             id: "china",
             name: "Китай",
             flag: chn,
-            description: "Архив котировок хлопка по рынку Китай. Исторические данные с 2010 года.",
+            description: "Архив котировок хлопка по рынку Китай. ",
             files: [
                 { year: "2026", href: "/downloads/china/CHINA_2026.zip" }
             ],
@@ -55,7 +55,7 @@ export default async function QuotesArchivePage({ params }: Props) {
             id: "brazil",
             name: "Бразилия",
             flag: brazil,
-            description: "Архив котировок хлопка по рынку Бразилии. Исторические данные с 2010 года.",
+            description: "Архив котировок хлопка по рынку Бразилии. ",
             files: [
                 { year: "2026", href: "/downloads/br/Brazil_2026.zip" }
             ],
