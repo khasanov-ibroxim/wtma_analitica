@@ -9,16 +9,16 @@ import bg from "@/assets/about/KOMANDA.jpg";
 const Page = () => {
     return (
         <div>
-            <Pagehero
-                title="О нас"
-                watermarkText=""
-                backgroundImage={bg}
-                breadcrumbs={[{label: "Главная", href: "/"}, {label: "О нас"}]}
-            />
+            {/*<Pagehero*/}
+            {/*    title="О нас"*/}
+            {/*    watermarkText=""*/}
+            {/*    backgroundImage={bg}*/}
+            {/*    breadcrumbs={[{label: "Главная", href: "/"}, {label: "О нас"}]}*/}
+            {/*/>*/}
             <About_s1/>
-            <AboutS2/>
-
-            <AboutS4/>
+            {/*<AboutS2/>*/}
+            {/**/}
+            {/*<AboutS4/>*/}
         </div>
     );
 };

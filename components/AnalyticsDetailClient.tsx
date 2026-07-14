@@ -71,7 +71,7 @@ const AnalyticsDetailClient = ({ item }: Props) => {
                     {/* O'ng/pastki — matn va yuklab olish */}
                     <div>
                         <h2 className="text-black font-bold text-2xl sm:text-3xl lg:text-[36px] mt-0 mb-5 sm:mb-[22px]">
-                            {item.title}
+                            Стратегические инсайты <br/>  <span className={"font-thin text-2xl"}>Рост на основе данных</span>
                         </h2>
 
                         {item.description.map((para, idx) => (

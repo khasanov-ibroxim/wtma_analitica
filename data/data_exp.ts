@@ -75,13 +75,13 @@ export interface Category {
 }
 
 export const categories: Category[] = [
-    { id: "analytics", label: "Аналитика рынка" },
-    { id: "trends", label: "Мировые тренды" },
-    { id: "production", label: "Производство" },
+    { id: "exhibitions", label: "Выставки" },
+    { id: "human", label: "Кадры" },
+    { id: "market", label: "Рынок" },
+    { id: "manufacturing", label: "Производство" },
     { id: "technology", label: "Технологии" },
-    { id: "logistics", label: "Экспорт и логистика" },
-    { id: "sustainability", label: "Устойчивое развитие" },
-    { id: "prices", label: "Цены и индексы" },
+    { id: "retail", label: "Ритейл" },
+
 ];
 
 // --- FILTER: ekspertlar ---
@@ -92,7 +92,7 @@ export interface Expert {
 }
 
 export const experts: Expert[] = [
-    { id: "shamsiddin", name: "Шамсиддин Екубов" , role: "Tex Area Analytics" },
+    { id: "shamsiddin", name: "Шамсиддин Екубов" , role: "Основатель World Textile Marketing Agency" },
 ];
 
 export const expertPosts: ExpertPost[] = [
@@ -148,7 +148,7 @@ export const expertPosts: ExpertPost[] = [
         coverImage: blog_0_0,
         publishedAt: "2026-07-08",
         readTime: 4,
-        category: "production",
+        category: "human",
         expert: "shamsiddin",
         seo: {
             metaTitle: "Конфликт «родственники vs менеджеры» в текстильном бизнесе | TEXARE ANALITICA",
@@ -258,7 +258,7 @@ export const expertPosts: ExpertPost[] = [
         coverImage: blog_1_0,
         publishedAt: "2026-07-08",
         readTime: 7,
-        category: "logistics",
+        category: "exhibitions",
         expert: "shamsiddin",
         seo: {
             metaTitle: "Почему выставки не дают клиентов фабрикам | TEXARE ANALITICA",
@@ -328,7 +328,7 @@ export const expertPosts: ExpertPost[] = [
         coverImage: blog_2_0,
         publishedAt: "2026-07-08",
         readTime: 6,
-        category: "trends",
+        category: "retail",
         expert: "shamsiddin",
         seo: {
             metaTitle: "Что фабрики не учитывают, открывая свой магазин | TEXARE ANALITICA",
