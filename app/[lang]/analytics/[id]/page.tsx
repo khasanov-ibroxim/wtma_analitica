@@ -1,7 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { getAnalyticsById, getAllAnalyticsIds } from "@/data/analytics";
-import AnalyticsDetailClient from "@/components/AnalyticsDetailClient";
+import AnalyticsDetailClient from "@/components/analytics/Analyticsdetailclient";
 
 interface PageProps {
     params: Promise<{ lang: string; id: string }>;

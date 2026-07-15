@@ -6,6 +6,7 @@ import HomeS3 from "@/components/home/home_s3";
 import HomeS5 from "@/components/home/home_s5";
 import HomeS6 from "@/components/home/home_s6";
 import HomeS7 from "@/components/home/home_s7";
+import HomeComponent from "@/components/home/homeComponent";
 
 interface Props {
     params: Promise<{ lang: string }>;
@@ -15,14 +16,7 @@ export default async function Page({ params }: Props) {
     const { lang } = await params;
     return (
         <>
-            <Home_header/>
-            <HeaderBottom />
-            <HomeS1 lang={lang} />
-            <HomeS2 lang={lang}/>
-            <HomeS3 lang={lang}/>
-            <HomeS5/>
-            <HomeS6/>
-            <HomeS7/>
+            <HomeComponent lang={lang} />
 
         </>
     );
