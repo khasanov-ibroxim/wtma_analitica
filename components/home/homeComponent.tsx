@@ -15,11 +15,11 @@ import {
     Download,
 } from "lucide-react";
 import home_header from "@/assets/home/IMG_2566.jpg"
-import analy from "@/assets/home/home_s2/analy.jpg"
-import archive from "@/assets/home/home_s2/archive.jpg"
+import analy from "@/assets/home/home_compoent/analy.jpg"
+import archive from "@/assets/home/home_compoent/archive.jpg"
 import dinamic from "@/assets/home/home_s2/dinamic.jpg"
-import indexMarket from "@/assets/home/home_s2/indexMarket.jpg"
-import tsent from "@/assets/home/home_s2/exspertize.jpg"
+import indexMarket from "@/assets/home/home_compoent/cotton.jpg"
+import tsent from "@/assets/home/home_compoent/exspertiza.jpg"
 import person from "@/assets/home/home_s7/IMG_1851.jpg"
 
 const features = [
@@ -48,16 +48,16 @@ const features = [
 
 
 const priceDynamicsDownloads = [
-    { label: "USA", file: "/downloads/usa/USA_2026.zip" },
-    { label: "China", file: "/downloads/china/CHINA_2026.zip" },
-    { label: "Brazil", file: "/downloads/br/Brazil_2026.zip" },
+    { label: "США", file: "/downloads/usa/USA_2026.zip" },
+    { label: "Китай", file: "/downloads/china/CHINA_2026.zip" },
+    { label: "Бразилия", file: "/downloads/br/Brazil_2026.zip" },
 ];
 
 const stats = [
-    { icon: Globe2, value: "80+", label: "стран в аналитике", sub: "Покрываем ключевые рынки мира" },
-    { icon: BarChart3, value: "10+ лет", label: "исторических данных", sub: "Глубокая аналитика и динамика" },
-    { icon: FileText, value: "50+", label: "готовых отчётов", sub: "Маркетинговые исследования и экспертные отчёты" },
-    { icon: Users2, value: "1000+", label: "довольных клиентов", sub: "Фабрики, бренды, трейдеры и инвесторы" },
+    { icon: Globe2, value: "10+", label: "стран в аналитике", sub: "Покрываем ключевые рынки мира" },
+    { icon: BarChart3, value: "3+ лет", label: "исторических данных", sub: "Глубокая аналитика и динамика" },
+    { icon: FileText, value: "10+", label: "готовых отчётов", sub: "Маркетинговые исследования и экспертные отчёты" },
+    { icon: Users2, value: "100+", label: "довольных клиентов", sub: "Фабрики, бренды, трейдеры и инвесторы" },
 ];
 
 export default function HomeComponent({lang}:{lang:string}) {
@@ -197,7 +197,7 @@ export default function HomeComponent({lang}:{lang:string}) {
                         {/* Динамика рынка — скачивание отчётов по странам вместо картинки */}
                         <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
                             <h3 className="text-base font-bold text-slate-900">
-                                Динамика цен на хлопок
+                                Динамика цен на хлопок 2026
                             </h3>
 
                             <p className="mt-2 text-sm leading-relaxed text-slate-500">
